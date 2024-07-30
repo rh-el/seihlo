@@ -36,16 +36,16 @@ function App() {
     setEndDate(e.target.value)
   }, [endDate])
 
-console.log(startDate, endDate)
+  
 
   return (
     <>
       <DataInput handleDataInput={handleDataInput} />
       <CityInput handleCity={handleCity} cityInput={cityInput} handleCityData={handleCityData} cityData={cityData} handleCoordinates={handleCoordinates} />
       <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
-
     </>
   );
 }
 
 export default App;
+
