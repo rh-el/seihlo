@@ -61,11 +61,23 @@ function App() {
     [endDate]
   );
 
+  const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
+    const formattedDate = formatDateUrl(startDate, endDate);
+    const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&${dataInput}`;
+    const dataTemp = await (await fetch(formattedUrl)).json();
+    // setRawData(data);
+    console.log(formattedUrl);
+    console.log("data handleFetch: " + dataTemp);
+    // console.log(dataInput);
+    const climdexIndices = calculateIndices(dataInput, dataTemp);
+    console.log(climdexIndices);
+  };
+
   // console.log(dataInput);
   // console.log(startDate);
   // console.log(endDate);
   // console.log(coordinates);
-  console.log(rawData);
+  // console.log(rawData);
 
   return (
     <>
@@ -86,7 +98,9 @@ function App() {
         coordinates={coordinates}
         startDate={startDate}
         endDate={endDate}
+        rawData={rawData}
         setRawData={setRawData}
+        handleFetch={handleFetch}
       />
     </>
   );

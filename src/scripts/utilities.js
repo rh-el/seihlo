@@ -1,3 +1,5 @@
+let yearsArray = [];
+
 function formatLocalisationUrl(coordinatesArr) {
   let formattedLocUrl = `latitude=${coordinatesArr[0]}&longitude=${coordinatesArr[1]}`;
   return formattedLocUrl;
@@ -16,17 +18,17 @@ function formatDataUrl(dataInput) {
       formattedDataUrl = "daily=wind_speed_10m_max";
       break;
     case "temp":
-      formattedDataUrl = "daily=temperature_2m_mean";
+      formattedDataUrl = "daily=apparent_temperature_max";
       break;
   }
   return formattedDataUrl;
 }
 
 function formatDateUrl(startDate, endDate) {
-  // yearsArray = [];
-  // const firstYear = startDate.split("-")[0];
-  // const lastYear = endDate.split("-")[0];
-  // yearsArray.push(firstYear, lastYear);
+  yearsArray = [];
+  const firstYear = startDate.split("-")[0];
+  const lastYear = endDate.split("-")[0];
+  yearsArray.push(firstYear, lastYear);
   const formattedDateUrl = `start_date=${startDate}&end_date=${endDate}`;
   return formattedDateUrl;
 }
