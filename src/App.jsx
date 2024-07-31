@@ -1,7 +1,8 @@
 import { useState, useCallback } from "react";
 import DataInput from "./components/DataInput";
 import CityInput from "./components/CityInput";
-import DateInput from './components/DateInputs';
+import DateInput from "./components/DateInputs";
+import SubmitButton from "./components/SubmitButton";
 import "./App.css";
 
 function App() {
@@ -11,41 +12,84 @@ function App() {
   const [coordinates, setCoordinates] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [rawData, setRawData] = useState(null);
 
-  const handleDataInput = useCallback((e) => {
-    setDataInput(e.target.id)
-  }, [dataInput])
+  const handleDataInput = useCallback(
+    (e) => {
+      setDataInput(formatDataUrl(e.target.id));
+    },
+    [dataInput]
+  );
 
-  const handleCity = useCallback((e) => {
-    setCityInput(e.target.value)
-  }, [cityInput])
+  const handleCity = useCallback(
+    (e) => {
+      setCityInput(e.target.value);
+    },
+    [cityInput]
+  );
 
-  const handleCityData = useCallback((data) => {
-    setCityData(data)
-  }, [cityData])
+  const handleCityData = useCallback(
+    (data) => {
+      setCityData(data);
+    },
+    [cityData]
+  );
 
-  const handleCoordinates = useCallback((e) => {
-    setCoordinates([cityData.results[e.target.id].latitude, cityData.results[e.target.id].longitude])
-  }, [cityData, coordinates])
+  const handleCoordinates = useCallback(
+    (e) => {
+      setCoordinates(
+        formatLocalisationUrl([
+          cityData.results[e.target.id].latitude,
+          cityData.results[e.target.id].longitude,
+        ])
+      );
+    },
+    [cityData, coordinates]
+  );
 
-  const handleStartDate = useCallback((e) => {
-    setStartDate(e.target.value)
-  }, [startDate])
+  const handleStartDate = useCallback(
+    (e) => {
+      validDate(e.target.value) ? setStartDate(e.target.value) : null;
+    },
+    [startDate]
+  );
 
-  const handleEndDate = useCallback((e) => {
-    setEndDate(e.target.value)
-  }, [endDate])
+  const handleEndDate = useCallback(
+    (e) => {
+      validDate(e.target.value) ? setEndDate(e.target.value) : null;
+    },
+    [endDate]
+  );
 
-  
+  // console.log(dataInput);
+  // console.log(startDate);
+  // console.log(endDate);
+  // console.log(coordinates);
+  console.log(rawData);
 
   return (
     <>
       <DataInput handleDataInput={handleDataInput} />
-      <CityInput handleCity={handleCity} cityInput={cityInput} handleCityData={handleCityData} cityData={cityData} handleCoordinates={handleCoordinates} />
-      <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
+      <CityInput
+        handleCity={handleCity}
+        cityInput={cityInput}
+        handleCityData={handleCityData}
+        cityData={cityData}
+        handleCoordinates={handleCoordinates}
+      />
+      <DateInput
+        handleStartDate={handleStartDate}
+        handleEndDate={handleEndDate}
+      />
+      <SubmitButton
+        dataInput={dataInput}
+        coordinates={coordinates}
+        startDate={startDate}
+        endDate={endDate}
+        setRawData={setRawData}
+      />
     </>
   );
 }
 
 export default App;
-
