@@ -1,9 +1,11 @@
-import { useState, useCallback, createContext, useContext } from "react";
+import React, { useState, useCallback, createContext, useContext } from "react";
 import DataInput from "./components/DataInput";
 import CityInput from "./components/CityInput";
 import DateInput from "./components/DateInputs";
 import SubmitButton from "./components/SubmitButton";
 import "./App.css";
+
+export const IndicesDataContext = createContext(null);
 
 function App() {
   const [dataInput, setDataInput] = useState(null);
@@ -13,7 +15,7 @@ function App() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [rawData, setRawData] = useState(null);
-  const indicesContext = createContext(climdexIndices);
+  const [indicesResults, setIndicesResults] = useState(null);
 
   const handleDataInput = useCallback(
     (e) => {
@@ -65,16 +67,11 @@ function App() {
   const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
     const formattedDate = formatDateUrl(startDate, endDate);
     const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&${dataInput}`;
-    const dataTemp = await (await fetch(formattedUrl)).json();
-    // setRawData(data);
-    const climdexIndices = calculateIndices(dataInput, dataTemp);
-    console.log(climdexIndices);
-    return;
+    const data = await (await fetch(formattedUrl)).json();
+    setRawData(data);
+    const climdexIndices = calculateIndices(dataInput, data);
+    setIndicesResults(climdexIndices);
   };
-
-  //useContext
-  const { indices } = useContext(indicesContext);
-  console.log(indices);
 
   // console.log(dataInput);
   // console.log(startDate);
@@ -84,27 +81,29 @@ function App() {
 
   return (
     <>
-      <DataInput handleDataInput={handleDataInput} />
-      <CityInput
-        handleCity={handleCity}
-        cityInput={cityInput}
-        handleCityData={handleCityData}
-        cityData={cityData}
-        handleCoordinates={handleCoordinates}
-      />
-      <DateInput
-        handleStartDate={handleStartDate}
-        handleEndDate={handleEndDate}
-      />
-      <SubmitButton
-        dataInput={dataInput}
-        coordinates={coordinates}
-        startDate={startDate}
-        endDate={endDate}
-        rawData={rawData}
-        setRawData={setRawData}
-        handleFetch={handleFetch}
-      />
+      <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
+        <DataInput handleDataInput={handleDataInput} />
+        <CityInput
+          handleCity={handleCity}
+          cityInput={cityInput}
+          handleCityData={handleCityData}
+          cityData={cityData}
+          handleCoordinates={handleCoordinates}
+        />
+        <DateInput
+          handleStartDate={handleStartDate}
+          handleEndDate={handleEndDate}
+        />
+        <SubmitButton
+          dataInput={dataInput}
+          coordinates={coordinates}
+          startDate={startDate}
+          endDate={endDate}
+          rawData={rawData}
+          setRawData={setRawData}
+          handleFetch={handleFetch}
+        />
+      </IndicesDataContext.Provider>
     </>
   );
 }
