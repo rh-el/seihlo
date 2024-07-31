@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, createContext, useContext } from "react";
 import DataInput from "./components/DataInput";
 import CityInput from "./components/CityInput";
 import DateInput from "./components/DateInputs";
@@ -13,6 +13,7 @@ function App() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [rawData, setRawData] = useState(null);
+  const indicesContext = createContext(climdexIndices);
 
   const handleDataInput = useCallback(
     (e) => {
@@ -66,12 +67,14 @@ function App() {
     const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&${dataInput}`;
     const dataTemp = await (await fetch(formattedUrl)).json();
     // setRawData(data);
-    console.log(formattedUrl);
-    console.log("data handleFetch: " + dataTemp);
-    // console.log(dataInput);
     const climdexIndices = calculateIndices(dataInput, dataTemp);
     console.log(climdexIndices);
+    return;
   };
+
+  //useContext
+  const { indices } = useContext(indicesContext);
+  console.log(indices);
 
   // console.log(dataInput);
   // console.log(startDate);
