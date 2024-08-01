@@ -10,45 +10,87 @@ function DataInput(props) {
   console.log(indicesResults);
 
   return (
-    <div className='data-type-container'>
-      <div className='data-type'>
+    <div className='data-type-container flex w-full'>
+      <label className='data-type w-full cursor-pointer '>
         <input
           type='radio'
           id='rain'
           name='input-radio'
           onClick={handleDataInput}
+          // style={radioButton}
+          className="hidden peer"
         />
-        <label htmlFor='precipitation'>precipitation</label>
-      </div>
-      <div className='data-type'>
+        <div htmlFor='precipitation' className="w-full flex justify-center cursor-pointer p-4 border border-customgray rounded-l-md duration-200 group hover:border-b-customblue hover:border-transparent hover:-translate-y-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">precipitation</div>
+      </label>
+      <label className='data-type w-full cursor-pointer'>
         <input
           type='radio'
           id='snow'
           name='input-radio'
           onClick={handleDataInput}
+          style={radioButton}
+          className="peer"
         />
-        <label htmlFor='snow'>snowfall</label>
-      </div>
-      <div className='data-type'>
+        <div htmlFor='snow' className="w-full flex justify-center cursor-pointer p-4 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:-translate-y-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0">snowfall</div>
+      </label>
+      <label className='data-type w-full  cursor-pointer'>
         <input
           type='radio'
           id='wind'
           name='input-radio'
           onClick={handleDataInput}
+          style={radioButton}
+          className="peer"
         />
-        <label htmlFor='wind'>wind</label>
-      </div>
-      <div className='data-type'>
+        <div htmlFor='wind' className="w-full flex justify-center cursor-pointer p-4 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:-translate-y-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0">wind</div>
+      </label>
+      <label className='data-type w-full cursor-pointer'>
         <input
           type='radio'
           id='temp'
           name='input-radio'
           onClick={handleDataInput}
+          style={radioButton}
+          className="peer"
         />
-        <label htmlFor='temperature'>temperature</label>
-      </div>
+        <div htmlFor='temperature' className="w-full flex justify-center cursor-pointer p-4 border border-customgray rounded-r-md duration-200 group hover:border-b-customblue hover:border-transparent hover:-translate-y-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0">temperature</div>
+      </label>
     </div>
   );
 }
 
 export default DataInput;
+
+const radioButton = {
+  display: 'none'
+}
+
+// const 
+
+// .formulaire-typeofweather [type="radio"] {
+//   display: none;
+// }
+// .formulaire-typeofweather label {
+//   /* display: block; */
+//   padding: 0.5rem;
+//   text-align: center;
+//   background: var(--radio-color1);
+//   border: var(--radio-color2) 0.5px solid;
+//   color: var(---radio-color2);
+//   cursor: pointer;
+//   transition: 0.1s ease-in-out 0s;
+//   /* display: flex; */
+//   /* min-width: 8rem; 
+//   flex:1 */
+//   width: 100%;
+// }
+// .formulaire-typeofweather label:hover {
+//   background-color: var(--radio-color1);
+//   border: var(--radio-color3) 0.5px solid;
+//   color: var(--radio-color3);
+// }
+// .formulaire-typeofweather [type="radio"]:checked ~ label {
+//   background-color: var(--radio-color1);
+//   border: var(--radio-color3) 0.5px solid;
+//   color: var(--radio-color3);
+// }

@@ -1,7 +1,6 @@
 import React, { useState, useCallback, createContext, useContext } from "react";
 import DataInput from "./components/DataInput";
 import CityInput from "./components/CityInput";
-import DateInput from "./components/DateInputs";
 import SubmitButton from "./components/SubmitButton";
 import "./App.css";
 
@@ -82,6 +81,7 @@ function App() {
   return (
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
+        <div className="w-full flex flex-col gap-4" >
         <DataInput handleDataInput={handleDataInput} />
         <CityInput
           handleCity={handleCity}
@@ -89,8 +89,6 @@ function App() {
           handleCityData={handleCityData}
           cityData={cityData}
           handleCoordinates={handleCoordinates}
-        />
-        <DateInput
           handleStartDate={handleStartDate}
           handleEndDate={handleEndDate}
         />
@@ -103,6 +101,7 @@ function App() {
           setRawData={setRawData}
           handleFetch={handleFetch}
         />
+        </div>
       </IndicesDataContext.Provider>
     </>
   );
