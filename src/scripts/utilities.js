@@ -18,7 +18,7 @@ function formatDataUrl(dataInput) {
       formattedDataUrl = "daily=wind_speed_10m_max";
       break;
     case "temp":
-      formattedDataUrl = "daily=apparent_temperature_max";
+      formattedDataUrl = "daily=wind_speed_10m_max";
       break;
   }
   return formattedDataUrl;

@@ -904,8 +904,6 @@ function calculateR10mm(year, data) {
 }
 
 function calculateIndices(dataInput, data) {
-  //   console.log("calculateIndices dataInput: " + dataInput);
-  //   console.log("calculateIndices data: " + data);
   const yearlyIndices = {
     years: [],
     TMm: [],
@@ -917,17 +915,12 @@ function calculateIndices(dataInput, data) {
   };
   for (let i = yearsArray[0]; i <= yearsArray[1]; i++) {
     yearlyIndices.years.push(i);
-    if (dataInput === "daily=apparent_temperature_max") {
-      yearlyIndices.TMm.push(calculateTMm(i, data));
-      yearlyIndices.TXge30.push(calculateTXge30(i, data));
-      yearlyIndices.TXgt50p.push(calculateTXgt50p(i, data));
-      yearlyIndices.ETR.push(calculateETR(i, data));
-      yearlyIndices.TXx.push(calculateTXx(i, data));
-    }
-    if (dataInput === "daily=precipitation_sum") {
-      yearlyIndices.R10mm.push(calculateR10mm(i, data));
-    }
+    yearlyIndices.TMm.push(calculateTMm(i, data));
+    yearlyIndices.TXge30.push(calculateTXge30(i, data));
+    yearlyIndices.TXgt50p.push(calculateTXgt50p(i, data));
+    yearlyIndices.ETR.push(calculateETR(i, data));
+    yearlyIndices.TXx.push(calculateTXx(i, data));
+    yearlyIndices.R10mm.push(calculateR10mm(i, data));
   }
-  //   console.log(yearlyIndices);
   return yearlyIndices;
 }

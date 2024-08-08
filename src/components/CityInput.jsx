@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback  } from "react";
+import { useState, useEffect, useCallback } from "react";
 import DateInput from "./DateInputs";
 let timer = 0;
 function CityInput(props) {
-  const {handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate} = props
+  const { handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate } = props
 
   const fetchCityLoc = async () => {
     try {
@@ -51,21 +51,21 @@ function CityInput(props) {
               id="ville"
               type="text"
               name="ville"
-              placeholder="Enter a city"
+              placeholder="select a city"
               onChange={handleCity}
               className="w-full bg-customblack border border-customgray p-4 text-center rounded-l-md caret-customblue duration-200 focus:outline-none focus:border-transparent focus:border-b-customblue !outline-none"
-              // autocomplete="off"
+            // autocomplete="off"
             />
           </div>
           <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
         </div>
         <div className="city-buttons-container absolute">
-              {cityData.results.slice(0,5).map((city,i) => 
-                <div className="city-button  px-2 py-3 border border-transparent hover:border-b hover:bg-customblue hover:text-customblack duration-200 hover:translate-x-2" key={i}>
-                  <button id={i} key={i} onClick={cityButtonClickHandler}>{city.name}, {city.country}, {city.latitude}, {city.longitude}</button>
-                </div>
-              )}
+          {cityData.results.slice(0, 5).map((city, i) =>
+            <div className="city-button  px-2 py-3 border border-transparent hover:border-b hover:bg-customblue hover:text-customblack duration-200 hover:translate-x-2" key={i}>
+              <button id={i} key={i} onClick={cityButtonClickHandler}>{city.name}, {city.country}, {city.latitude}, {city.longitude}</button>
             </div>
+          )}
+        </div>
       </div>
     )
   } else {
@@ -77,17 +77,17 @@ function CityInput(props) {
               id="ville"
               type="text"
               name="ville"
-              placeholder="Enter a city"
+              placeholder="select a city"
               onChange={handleCity}
               className=" focus:outline-none w-full bg-customblack border border-customgray p-4 text-center rounded-l-md caret-customblue duration-200 focus:border-transparent focus:border-b-customblue !outline-none"
-              // autocomplete="off"
+            // autocomplete="off"
             />
           </div>
           <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
         </div>
 
       </div>
-    
+
     )
   }
 }

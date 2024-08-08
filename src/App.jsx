@@ -4,6 +4,8 @@ import CityInput from "./components/CityInput";
 import SubmitButton from "./components/SubmitButton";
 import Graph from './components/Graph';
 import "./App.css";
+import IndiceChoice from "./components/IndiceChoice";
+import TextInfos from "./components/TextInfos";
 
 export const IndicesDataContext = createContext(null);
 
@@ -16,12 +18,14 @@ function App() {
   const [endDate, setEndDate] = useState(null);
   const [rawData, setRawData] = useState(null);
   const [indicesResults, setIndicesResults] = useState(null);
+  const [indiceSelection, setIndiceSelection] = useState(null);
 
   const handleDataInput = useCallback(
     (e) => {
-      setDataInput(formatDataUrl(e.target.id));
+      setDataInput(e.target.id);
+      setIndiceSelection('raw')
+      rawData ? document.getElementById('raw').checked = true : null
     }
-
     ,
     [dataInput]
   );
@@ -66,39 +70,57 @@ function App() {
     [endDate]
   );
 
+  const handleIndiceSelection = useCallback(
+    (e) => {
+      setIndiceSelection(e.target.id)
+    },
+    [indiceSelection]
+  )
+
+
   const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
     const formattedDate = formatDateUrl(startDate, endDate);
-    const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&${dataInput}`;
+    const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&daily=precipitation_sum&daily=snowfall_sum&daily=wind_speed_10m_max&daily=apparent_temperature_max`;
     const data = await (await fetch(formattedUrl)).json();
     setRawData(data);
     const climdexIndices = calculateIndices(dataInput, data);
     setIndicesResults(climdexIndices);
   };
 
+  // console.log(indicesResults)
+
   return (
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
-        <div className="w-full flex flex-col gap-4" >
-          <DataInput handleDataInput={handleDataInput} />
-          <Graph dataInput={dataInput} />
-          <CityInput
-            handleCity={handleCity}
-            cityInput={cityInput}
-            handleCityData={handleCityData}
-            cityData={cityData}
-            handleCoordinates={handleCoordinates}
-            handleStartDate={handleStartDate}
-            handleEndDate={handleEndDate}
-          />
-          <SubmitButton
-            dataInput={dataInput}
-            coordinates={coordinates}
-            startDate={startDate}
-            endDate={endDate}
-            rawData={rawData}
-            setRawData={setRawData}
-            handleFetch={handleFetch}
-          />
+        <div className="flex w-full gap-4">
+          {rawData && (
+            <IndiceChoice handleIndiceSelection={handleIndiceSelection} />
+          )}
+          <div className="w-full flex flex-col gap-4" >
+            <DataInput handleDataInput={handleDataInput} />
+            <Graph dataInput={dataInput} indiceSelection={indiceSelection} />
+            <CityInput
+              handleCity={handleCity}
+              cityInput={cityInput}
+              handleCityData={handleCityData}
+              cityData={cityData}
+              handleCoordinates={handleCoordinates}
+              handleStartDate={handleStartDate}
+              handleEndDate={handleEndDate}
+            />
+            <SubmitButton
+              dataInput={dataInput}
+              coordinates={coordinates}
+              startDate={startDate}
+              endDate={endDate}
+              rawData={rawData}
+              setRawData={setRawData}
+              handleFetch={handleFetch}
+            />
+          </div>
+          {rawData && (
+            <TextInfos />
+          )}
         </div>
       </IndicesDataContext.Provider>
     </>
