@@ -2,6 +2,7 @@ import React, { useState, useCallback, createContext, useContext } from "react";
 import DataInput from "./components/DataInput";
 import CityInput from "./components/CityInput";
 import SubmitButton from "./components/SubmitButton";
+import Graph from './components/Graph';
 import "./App.css";
 
 export const IndicesDataContext = createContext(null);
@@ -19,7 +20,9 @@ function App() {
   const handleDataInput = useCallback(
     (e) => {
       setDataInput(formatDataUrl(e.target.id));
-    },
+    }
+
+    ,
     [dataInput]
   );
 
@@ -72,35 +75,30 @@ function App() {
     setIndicesResults(climdexIndices);
   };
 
-  // console.log(dataInput);
-  // console.log(startDate);
-  // console.log(endDate);
-  // console.log(coordinates);
-  // console.log(rawData);
-
   return (
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
         <div className="w-full flex flex-col gap-4" >
-        <DataInput handleDataInput={handleDataInput} />
-        <CityInput
-          handleCity={handleCity}
-          cityInput={cityInput}
-          handleCityData={handleCityData}
-          cityData={cityData}
-          handleCoordinates={handleCoordinates}
-          handleStartDate={handleStartDate}
-          handleEndDate={handleEndDate}
-        />
-        <SubmitButton
-          dataInput={dataInput}
-          coordinates={coordinates}
-          startDate={startDate}
-          endDate={endDate}
-          rawData={rawData}
-          setRawData={setRawData}
-          handleFetch={handleFetch}
-        />
+          <DataInput handleDataInput={handleDataInput} />
+          <Graph dataInput={dataInput} />
+          <CityInput
+            handleCity={handleCity}
+            cityInput={cityInput}
+            handleCityData={handleCityData}
+            cityData={cityData}
+            handleCoordinates={handleCoordinates}
+            handleStartDate={handleStartDate}
+            handleEndDate={handleEndDate}
+          />
+          <SubmitButton
+            dataInput={dataInput}
+            coordinates={coordinates}
+            startDate={startDate}
+            endDate={endDate}
+            rawData={rawData}
+            setRawData={setRawData}
+            handleFetch={handleFetch}
+          />
         </div>
       </IndicesDataContext.Provider>
     </>
