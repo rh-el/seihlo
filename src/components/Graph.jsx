@@ -7,7 +7,32 @@ import TextInfos from "./TextInfos";
 
 function Graph({ dataInput, indiceSelection }) {
     const { rawData, indicesResults } = useContext(IndicesDataContext);
-    let data, requestedData;
+    let data, requestedData, indicesInfos;
+
+    switch (indiceSelection) {
+        case 'raw':
+            indicesInfos='daily raw data'
+            break;
+        case 'tmm':
+            indicesInfos='yearly average temperature'
+            break;
+        case 'txge30':
+            indicesInfos='yearly count of days with temperature exceeding 30°C'
+            break;
+        case 'txgt50p':
+            indicesInfos='yearly percentage of days above average temperature'
+            break;  
+        case 'etr':
+            indicesInfos='yearly temperature range'
+            break;
+        case 'txx':
+            indicesInfos='yearly maximum temperature'
+            break;
+        case 'r10mm':
+            indicesInfos='yearly count of days with precipitation exceeding 10mm'
+            break;
+    }
+    console.log(indicesInfos)
 
     if (rawData && indiceSelection === 'raw') {
         switch (dataInput) {
@@ -44,7 +69,7 @@ function Graph({ dataInput, indiceSelection }) {
                         plugins: {
                             title: {
                                 display: true,
-                                text: "sum text"
+                                text:indicesInfos
                             },
                             legend: {
                                 display: false
@@ -95,7 +120,7 @@ function Graph({ dataInput, indiceSelection }) {
                         plugins: {
                             title: {
                                 display: true,
-                                text: "sum text"
+                                text: indicesInfos
                             },
                             legend: {
                                 display: false

@@ -18,7 +18,8 @@ function App() {
   const [endDate, setEndDate] = useState(null);
   const [rawData, setRawData] = useState(null);
   const [indicesResults, setIndicesResults] = useState(null);
-  const [indiceSelection, setIndiceSelection] = useState(null);
+  const [indiceSelection, setIndiceSelection] = useState('raw');
+  const [selectedCity, setSelectedCity] = useState(null);
 
   const handleDataInput = useCallback(
     (e) => {
@@ -77,6 +78,12 @@ function App() {
     [indiceSelection]
   )
 
+  const handleCitySelection = useCallback(
+    (e) => {
+      setSelectedCity(cityData.results[e.target.id])
+    },
+    [cityData]
+  )
 
   const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
     const formattedDate = formatDateUrl(startDate, endDate);
@@ -87,7 +94,7 @@ function App() {
     setIndicesResults(climdexIndices);
   };
 
-  // console.log(indicesResults)
+  // console.log(selectedCity)
 
   return (
     <>
@@ -107,6 +114,7 @@ function App() {
               handleCoordinates={handleCoordinates}
               handleStartDate={handleStartDate}
               handleEndDate={handleEndDate}
+              handleCitySelection={handleCitySelection}
             />
             <SubmitButton
               dataInput={dataInput}
@@ -119,7 +127,16 @@ function App() {
             />
           </div>
           {rawData && (
-            <TextInfos />
+            <TextInfos 
+            coordinates={coordinates}
+            selectedCity={selectedCity}
+            startDate={startDate}
+            endDate={endDate}
+            dataInput={dataInput}
+            indiceSelection={indiceSelection}
+             />
+
+
           )}
         </div>
       </IndicesDataContext.Provider>

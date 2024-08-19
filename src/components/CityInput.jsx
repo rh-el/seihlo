@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import DateInput from "./DateInputs";
 let timer = 0;
 function CityInput(props) {
-  const { handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate } = props
+  const { handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate, handleCitySelection } = props
 
   const fetchCityLoc = async () => {
     try {
@@ -24,6 +24,7 @@ function CityInput(props) {
 
   const cityButtonClickHandler = (e) => {
     handleCoordinates(e)
+    handleCitySelection(e)
     handleCityData({})
 
   }
