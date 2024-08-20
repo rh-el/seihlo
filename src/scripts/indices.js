@@ -924,3 +924,4 @@ function calculateIndices(dataInput, data) {
   }
   return yearlyIndices;
 }
+

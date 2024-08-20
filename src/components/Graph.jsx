@@ -32,7 +32,6 @@ function Graph({ dataInput, indiceSelection }) {
             indicesInfos='yearly count of days with precipitation exceeding 10mm'
             break;
     }
-    console.log(indicesInfos)
 
     if (rawData && indiceSelection === 'raw') {
         switch (dataInput) {
@@ -49,6 +48,9 @@ function Graph({ dataInput, indiceSelection }) {
                 requestedData = rawData.daily.apparent_temperature_max
                 break;
         }
+
+        console.log('max: ' + getMaxValue(requestedData))
+        console.log('min: ' + getMinValue(requestedData))
 
         data = {
             labels: rawData.daily.time,
@@ -96,6 +98,7 @@ function Graph({ dataInput, indiceSelection }) {
                 break;
             case 'txx':
                 requestedData = indicesResults.TXx
+                
                 break;
             case 'r10mm':
                 requestedData = indicesResults.R10mm
@@ -105,11 +108,18 @@ function Graph({ dataInput, indiceSelection }) {
         data = {
             labels: indicesResults.years,
             datasets: [{
-                label: "smthg",
+                label: "degrees",
                 data: requestedData,
                 borderColor: "#E0FFFF",
-                radius: 4,
+                radius: function(context) {
+                    const index = context.dataIndex;
+                    const value = context.dataset.data[index];
+                    return convertRange(value, [getMinValue(requestedData), getMaxValue(requestedData)], [4, 10]);
+                },
+                pointHoverRadius: 10,
+                pointHoverBackgroundColor: '#E0FFFF',   
                 borderWidth: 2,
+                tension: 0.5
             }],
         }
         return (
@@ -120,10 +130,60 @@ function Graph({ dataInput, indiceSelection }) {
                         plugins: {
                             title: {
                                 display: true,
-                                text: indicesInfos
+                                text: indicesInfos,
+                                color: '#E0FFFF',
+                                font: {
+                                    family: "RX100",
+                                    weight: 'normal',
+                                    size: 18
+                                }
                             },
                             legend: {
                                 display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(224, 252, 255)',
+                                titleColor: 'black',
+                                bodyColor: 'black',
+                                titleFont: {
+                                    family: "RX100",
+                                    weight: 'normal',
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    family: 'RX100',
+                                    size: 14
+                                },
+                                caretSize: 0,
+                                displayColors: false,
+                                padding: 20,
+                                position: 'average',
+                                xAlign: 'left',
+                                caretPadding: 15
+                            }
+                        },
+                        scales: {
+                            y: {
+                                ticks: {
+                                    color: 'rgba(224, 252, 255, 0.5)',
+                                    font: {
+                                        family: "RX100",
+                                        weight: 'normal',
+                                        size: 14
+                                    }
+                                }
+
+                            },
+                            x: {
+                                ticks: {
+                                    color: 'rgba(224, 252, 255, 0.5)',
+                                    font: {
+                                        family: "RX100",
+                                        weight: 'normal',
+                                        size: 14
+                                    }
+                                }
+
                             }
                         }
                     }} />
@@ -139,19 +199,14 @@ export default Graph;
 
 
 
-function indiceGraph(xaxis, yaxis) {
-    chart = new Chart(divContainer, {
-        type: type,
-        data: {
-            labels: xaxis,
-            datasets: [
-                {
-                    label: "smthg",
-                    data: yaxis,
-                    borderColor: "white ",
-                    backgroundColor: "white",
-                },
-            ],
-        },
-    });
+function convertRange(value, r1, r2) {
+    return ( value - r1[ 0 ] ) * ( r2[ 1 ] - r2[ 0 ] ) / ( r1[ 1 ] - r1[ 0 ] ) + r2[ 0 ];
+}
+
+function getMaxValue(arr) {
+    return Math.max(...arr)
+}
+
+function getMinValue(arr) {
+    return Math.min(...arr)
 }
