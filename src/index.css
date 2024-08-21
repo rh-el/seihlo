@@ -11,3 +11,7 @@
     src: url(./assets/fonts/RX100-Regular.otf);
   }
 } 
+
+html {
+  scroll-behavior: smooth;
+}

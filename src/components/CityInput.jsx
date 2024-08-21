@@ -78,7 +78,7 @@ function CityInput(props) {
               id="ville"
               type="text"
               name="ville"
-              placeholder="select a city"
+              placeholder="enter a city"
               onChange={handleCity}
               className=" focus:outline-none w-full bg-customblack border border-customgray p-4 text-center rounded-l-md caret-customblue duration-200 focus:border-transparent focus:border-b-customblue !outline-none"
             // autocomplete="off"
