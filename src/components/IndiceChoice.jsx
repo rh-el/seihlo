@@ -2,7 +2,9 @@
 
 function IndiceChoice({ handleIndiceSelection }) {
     return (
-        <div className="mt-[78px] w-4/12 gap-">
+        <>
+        {/* <div className="mt-[78px] w-4/12"></div> */}
+        <div className="w-4/12 h-fit top-[100px] sticky">
             <label className="w-full cursor-pointer">
                 <input
                     name="indiceChoice"
@@ -82,6 +84,7 @@ function IndiceChoice({ handleIndiceSelection }) {
                     <div htmlFor='r10mm' className="w-full flex justify-center cursor-pointer p-2 border border-customgray rounded-b-md duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">r10mm</div>
                 </label>)}
         </div>
+        </>
     )
 }
 

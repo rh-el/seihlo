@@ -925,3 +925,21 @@ function calculateIndices(dataInput, data) {
   return yearlyIndices;
 }
 
+
+function convertRange(value, r1, r2) {
+  return ( value - r1[ 0 ] ) * ( r2[ 1 ] - r2[ 0 ] ) / ( r1[ 1 ] - r1[ 0 ] ) + r2[ 0 ];
+}
+
+function getMaxValue(arr) {
+  return Math.max(...arr)
+}
+
+function getMinValue(arr) {
+  return Math.min(...arr)
+}
+
+function getMeanValue(arr) {
+  let meanValue = arr.reduce((count, element) => count + element) /
+  arr.length;
+  return meanValue;
+}

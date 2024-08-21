@@ -1,0 +1,102 @@
+import { useContext } from "react";
+import { IndicesDataContext } from "../App";
+import { Bar } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
+
+function MeanGraph({ dataInput, indiceSelection, requestedData }) {
+    const { rawData, indicesResults } = useContext(IndicesDataContext);
+
+    const minValue = getMinValue(requestedData)
+    const minIndex = requestedData.indexOf(minValue)
+    const minYear = indicesResults.years[minIndex]
+
+    const maxValue = getMaxValue(requestedData)
+    const maxIndex = requestedData.indexOf(maxValue)
+    const maxYear = indicesResults.years[maxIndex]
+
+    const meanValue = getMeanValue(requestedData)
+
+    // console.log(minYear)
+    // console.log(maxYear);
+    // console.log(meanValue);
+    
+    const data = {
+        labels: ['minimum record in ' + minYear, 'maximum record in ' + maxYear, 'average'],
+        datasets: [{
+            label: "value",
+            data: [minValue, maxValue, meanValue],
+            borderColor: "#E0FFFF",
+            borderWidth: 2,
+            hoverBackgroundColor: "#E0FFFF",
+            hoverBorderColor: 'bg-customblack'
+        }],
+    }
+
+    return (
+        <Bar data={data}
+        options={{
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'minimum, maximum and average values of the indice on the selected period',
+                    color: '#E0FFFF',
+                    font: {
+                        family: "RX100",
+                        weight: 'normal',
+                        size: 18
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(224, 252, 255)',
+                    titleColor: 'black',
+                    bodyColor: 'black',
+                    titleFont: {
+                        family: "RX100",
+                        weight: 'normal',
+                        size: 14
+                    },
+                    bodyFont: {
+                        family: 'RX100',
+                        size: 14
+                    },
+                    caretSize: 0,
+                    displayColors: false,
+                    padding: 20,
+                    position: 'average',
+                    xAlign: 'left',
+                    caretPadding: 15
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        color: 'rgba(224, 252, 255, 0.5)',
+                        font: {
+                            family: "RX100",
+                            weight: 'normal',
+                            size: 14
+                        }
+                    }
+
+                },
+                x: {
+                    ticks: {
+                        color: 'rgba(224, 252, 255, 0.5)',
+                        font: {
+                            family: "RX100",
+                            weight: 'normal',
+                            size: 14
+                        }
+                    }
+
+                }
+            }
+        }} />
+    )
+    
+}
+
+export default MeanGraph;

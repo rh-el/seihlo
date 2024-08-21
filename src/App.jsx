@@ -59,14 +59,16 @@ function App() {
 
   const handleStartDate = useCallback(
     (e) => {
-      validDate(e.target.value) ? setStartDate(e.target.value) : null;
+      // validDate(e.target.value) ? setStartDate(e.target.value) : null;
+      setStartDate(e.target.value + '-01-01')
     },
     [startDate]
   );
 
   const handleEndDate = useCallback(
     (e) => {
-      validDate(e.target.value) ? setEndDate(e.target.value) : null;
+      // validDate(e.target.value) ? setEndDate(e.target.value) : null;
+      setEndDate(e.target.value + '-12-31')
     },
     [endDate]
   );
@@ -94,7 +96,7 @@ function App() {
     setIndicesResults(climdexIndices);
   };
 
-  // console.log(selectedCity)
+  // console.log(startDate)
 
   return (
     <>

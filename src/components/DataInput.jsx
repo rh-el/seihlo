@@ -64,33 +64,3 @@ export default DataInput;
 const radioButton = {
   display: 'none'
 }
-
-// const 
-
-// .formulaire-typeofweather [type="radio"] {
-//   display: none;
-// }
-// .formulaire-typeofweather label {
-//   /* display: block; */
-//   padding: 0.5rem;
-//   text-align: center;
-//   background: var(--radio-color1);
-//   border: var(--radio-color2) 0.5px solid;
-//   color: var(---radio-color2);
-//   cursor: pointer;
-//   transition: 0.1s ease-in-out 0s;
-//   /* display: flex; */
-//   /* min-width: 8rem; 
-//   flex:1 */
-//   width: 100%;
-// }
-// .formulaire-typeofweather label:hover {
-//   background-color: var(--radio-color1);
-//   border: var(--radio-color3) 0.5px solid;
-//   color: var(--radio-color3);
-// }
-// .formulaire-typeofweather [type="radio"]:checked ~ label {
-//   background-color: var(--radio-color1);
-//   border: var(--radio-color3) 0.5px solid;
-//   color: var(--radio-color3);
-// }
