@@ -39,3 +39,20 @@ function validDate(date) {
   }
   return false;
 }
+
+let scrollYPos = 0
+window.onscroll = function() {
+  console.log(window.scrollY)
+  if (window.scrollY > scrollYPos) {
+    window.scrollY > 99 ? document.getElementById('text-infos').style.transform = 'translateY(calc((448px/3) - 100px + 2rem))' : null
+    window.scrollY > 199 ? document.getElementById('text-infos').style.transform = 'translateY(calc(((448px/3) * 2) - 200px + 2rem))' : null
+    window.scrollY > 250 ? document.getElementById('text-infos').style.transform = 'translateY(calc(448px - 250px + 2rem))' : null
+    scrollYPos = window.scrollY
+  } else {
+    window.scrollY < 200 ? document.getElementById('text-infos').style.transform = 'translateY(calc(((448px/3) * 2) - 200px + 2rem))' : null
+    window.scrollY < 100 ? document.getElementById('text-infos').style.transform = 'translateY(calc((448px/3) - 100px + 2rem))' : null
+    window.scrollY < 50 ? document.getElementById('text-infos').style.transform = 'translateY(0)' : null
+    scrollYPos = window.scrollY
+  }
+  // document.getElementById('text-infos').style.
+}
