@@ -3,20 +3,7 @@
 function IndiceChoice({ handleIndiceSelection }) {
     return (
         <>
-        {/* <div className="mt-[78px] w-4/12"></div> */}
         <div className="w-4/12 h-fit top-[100px] sticky">
-            <label className="w-full cursor-pointer">
-                <input
-                    name="indiceChoice"
-                    id="raw"
-                    type="radio"
-                    defaultChecked
-                    className="hidden peer"
-                    onClick={handleIndiceSelection}
-                />
-                <div htmlFor='raw' className="w-full flex justify-center cursor-pointer p-2 border border-customgray rounded-t-md duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">raw</div>
-            </label>
-
             {document.getElementById('temp').checked && (
                 <>
                     <label className="w-full cursor-pointer">
@@ -24,10 +11,11 @@ function IndiceChoice({ handleIndiceSelection }) {
                             name="indiceChoice"
                             id="tmm"
                             type="radio"
+                            defaultChecked
                             className="hidden peer"
                             onClick={handleIndiceSelection}
                         />
-                        <div htmlFor='tmm' className="w-full flex justify-center cursor-pointer p-2 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">tmm</div>
+                        <div htmlFor='tmm' className="w-full flex justify-center cursor-pointer rounded-t-md p-2 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">tmm</div>
                     </label>
 
                     <label className="w-full cursor-pointer">
@@ -78,10 +66,11 @@ function IndiceChoice({ handleIndiceSelection }) {
                         name="indiceChoice"
                         id="r10mm"
                         type="radio"
+                        defaultChecked
                         className="hidden peer"
                         onClick={handleIndiceSelection}
                     />
-                    <div htmlFor='r10mm' className="w-full flex justify-center cursor-pointer p-2 border border-customgray rounded-b-md duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">r10mm</div>
+                    <div htmlFor='r10mm' className="w-full flex justify-center cursor-pointer p-2 border border-customgray rounded-md duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">r10mm</div>
                 </label>)}
         </div>
         </>

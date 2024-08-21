@@ -24,8 +24,9 @@ function App() {
   const handleDataInput = useCallback(
     (e) => {
       setDataInput(e.target.id);
-      setIndiceSelection('raw')
-      rawData ? document.getElementById('raw').checked = true : null
+      e.target.id === 'temp' ? setIndiceSelection('tmm') : setIndiceSelection('r10mm')
+      // setIndiceSelection('raw')
+      // rawData ? document.getElementById('raw').checked = true : null
     }
     ,
     [dataInput]
@@ -96,12 +97,15 @@ function App() {
     setIndicesResults(climdexIndices);
   };
 
+
   // console.log(startDate)
 
   return (
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
-        <div className="flex w-full gap-4">
+        {/* <div className="flex w-full gap-4"> */}
+        <div className={rawData ? "flex w-full gap-4" : "flex w-1/2 gap-4"} >
+
           {rawData && (
             <IndiceChoice handleIndiceSelection={handleIndiceSelection} />
           )}

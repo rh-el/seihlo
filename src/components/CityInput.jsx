@@ -46,7 +46,7 @@ function CityInput(props) {
   if (cityData && Object.keys(cityData).length > 0) {
     return (
       <div className="input-dropdown-container w-full">
-        <div className="input-container flex leading-10">
+        <div className="input-container flex">
           <div className="city-input-container w-6/12">
             <input
               id="ville"
@@ -72,7 +72,7 @@ function CityInput(props) {
   } else {
     return (
       <div className="input-dropdown-container w-full">
-        <div className="input-container flex leading-10">
+        <div className="input-container flex">
           <div className="city-input-container w-6/12">
             <input
               id="ville"

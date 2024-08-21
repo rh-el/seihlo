@@ -1,4 +1,3 @@
-let yearsArray = [];
 
 function formatLocalisationUrl(coordinatesArr) {
   let formattedLocUrl = `latitude=${coordinatesArr[0]}&longitude=${coordinatesArr[1]}`;

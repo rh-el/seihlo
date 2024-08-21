@@ -22,7 +22,7 @@ function TextInfos(props) {
     return (
         <>
         {/* <div className="mt-[78px] w-4/12"></div> */}
-        <div className=" w-4/12 border border-gray-800 rounded-md p-2 text-customblue/70 h-fit top-[100px] sticky">
+        <div id='text-infos' className=" w-4/12 border border-gray-800 rounded-md p-2 text-customblue/70 h-fit top-[100px] sticky">
             <p>selected city: {selectedCity.name.toLowerCase()}</p>
             <p>country: {selectedCity.country.toLowerCase()}</p>
             <p>region: {selectedCity.admin1.toLowerCase()}</p>
@@ -37,3 +37,4 @@ function TextInfos(props) {
 }
 
 export default TextInfos;
+
