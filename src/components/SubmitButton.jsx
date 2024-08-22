@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { IndicesDataContext } from "../App";
+import { IndicesDataContext } from '../routes/App';
 
 function SubmitButton(props) {
   const { rawData, indicesResults } = useContext(IndicesDataContext);

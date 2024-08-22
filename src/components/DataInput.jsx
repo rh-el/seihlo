@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { IndicesDataContext } from "../App";
+import { IndicesDataContext } from '../routes/App';
 
 function DataInput(props) {
   const { handleDataInput } = props;

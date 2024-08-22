@@ -1,11 +1,10 @@
 import React, { useState, useCallback, createContext, useContext } from "react";
-import DataInput from "./components/DataInput";
-import CityInput from "./components/CityInput";
-import SubmitButton from "./components/SubmitButton";
-import Graph from './components/Graph';
-import "./App.css";
-import IndiceChoice from "./components/IndiceChoice";
-import TextInfos from "./components/TextInfos";
+import DataInput from "../components/DataInput";
+import CityInput from "../components/CityInput";
+import SubmitButton from "../components/SubmitButton";
+import Graph from '../components/Graph';
+import IndiceChoice from "../components/IndiceChoice";
+import TextInfos from "../components/TextInfos";
 
 export const IndicesDataContext = createContext(null);
 
