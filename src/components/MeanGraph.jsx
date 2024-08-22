@@ -33,68 +33,70 @@ function MeanGraph({ dataInput, indiceSelection, requestedData }) {
     }
 
     return (
-        <Bar data={data}
-        options={{
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'minimum, maximum and average values of the indice on the selected period',
-                    color: '#E0FFFF',
-                    font: {
-                        family: "RX100",
-                        weight: 'normal',
-                        size: 18
-                    }
-                },
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(224, 252, 255)',
-                    titleColor: 'black',
-                    bodyColor: 'black',
-                    titleFont: {
-                        family: "RX100",
-                        weight: 'normal',
-                        size: 14
-                    },
-                    bodyFont: {
-                        family: 'RX100',
-                        size: 14
-                    },
-                    caretSize: 0,
-                    displayColors: false,
-                    padding: 20,
-                    position: 'average',
-                    xAlign: 'left',
-                    caretPadding: 15
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        color: 'rgba(224, 252, 255, 0.5)',
+
+            <Bar data={data}
+            options={{
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'minimum, maximum and average values of the indice on the selected period',
+                        color: '#E0FFFF',
                         font: {
                             family: "RX100",
                             weight: 'normal',
-                            size: 14
+                            size: 18
                         }
-                    }
-
-                },
-                x: {
-                    ticks: {
-                        color: 'rgba(224, 252, 255, 0.5)',
-                        font: {
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(224, 252, 255)',
+                        titleColor: 'black',
+                        bodyColor: 'black',
+                        titleFont: {
                             family: "RX100",
                             weight: 'normal',
                             size: 14
-                        }
+                        },
+                        bodyFont: {
+                            family: 'RX100',
+                            size: 14
+                        },
+                        caretSize: 0,
+                        displayColors: false,
+                        padding: 20,
+                        position: 'average',
+                        xAlign: 'left',
+                        caretPadding: 15
                     }
-
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: 'rgba(224, 252, 255, 0.5)',
+                            font: {
+                                family: "RX100",
+                                weight: 'normal',
+                                size: 14
+                            }
+                        }
+    
+                    },
+                    x: {
+                        ticks: {
+                            color: 'rgba(224, 252, 255, 0.5)',
+                            font: {
+                                family: "RX100",
+                                weight: 'normal',
+                                size: 14
+                            }
+                        }
+    
+                    }
                 }
-            }
-        }} />
+            }} />
+
     )
     
 }

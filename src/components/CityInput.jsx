@@ -25,8 +25,8 @@ function CityInput(props) {
   const cityButtonClickHandler = (e) => {
     handleCoordinates(e)
     handleCitySelection(e)
+    document.getElementById('ville').value = cityData.results[e.target.id].name.toLowerCase()
     handleCityData({})
-
   }
 
   useEffect(() => {
@@ -62,8 +62,8 @@ function CityInput(props) {
         </div>
         <div className="city-buttons-container absolute">
           {cityData.results.slice(0, 5).map((city, i) =>
-            <div className="city-button  px-2 py-3 border border-transparent hover:border-b hover:bg-customblue hover:text-customblack duration-200 hover:translate-x-2" key={i}>
-              <button id={i} key={i} onClick={cityButtonClickHandler}>{city.name}, {city.country}, {city.latitude}, {city.longitude}</button>
+            <div className="city-button  px-2 py-1 border border-transparent hover:border-b hover:bg-customblue hover:text-customblack duration-200 " key={i}>
+              <button className="text-left" id={i} key={i} onClick={cityButtonClickHandler}>{city.name.toLowerCase()}, {city.country.toLowerCase()}<br/> {city.latitude}, {city.longitude}</button>
             </div>
           )}
         </div>

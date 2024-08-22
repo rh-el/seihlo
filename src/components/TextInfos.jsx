@@ -22,7 +22,7 @@ function TextInfos(props) {
     return (
         <>
         {/* <div className="mt-[78px] w-4/12"></div> */}
-        <div id='text-infos' className=" w-4/12 border border-gray-800 rounded-md p-2 text-customblue/70 h-fit top-[100px] sticky " style={textInfos}>
+        <div id='text-infos' className=" w-4/12 border border-gray-800 rounded-md p-2 text-customblue/70 h-fit top-[100px] sticky " style={textInfosStyle}>
             <p>selected city: {selectedCity.name.toLowerCase()}</p>
             <p>country: {selectedCity.country.toLowerCase()}</p>
             <p>region: {selectedCity.admin1.toLowerCase()}</p>
@@ -31,7 +31,7 @@ function TextInfos(props) {
             <p>requested data: {reqDataInput}</p>
             <br />
             <p>data visualized: {indiceSelection}</p>
-            <p>scrolly: {window.scrollY} </p>           
+            {/* <p>scrolly: {window.scrollY} </p>            */}
         </div>
         </>
     )
@@ -39,7 +39,7 @@ function TextInfos(props) {
 
 export default TextInfos;
 
-const textInfos = {
+const textInfosStyle = {
     transitionDuration: '0.5s',
     transitionTimingFunction: 'cubic-bezier(0.39, 0.575, 0.565, 1)'    
 }

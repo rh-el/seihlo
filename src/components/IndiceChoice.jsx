@@ -3,7 +3,7 @@
 function IndiceChoice({ handleIndiceSelection }) {
     return (
         <>
-        <div className="w-4/12 h-fit top-[100px] sticky">
+        <div id='indice-container' className=" w-4/12 h-fit top-[100px] sticky" style={indiceChoiceStyle}>
             {document.getElementById('temp').checked && (
                 <>
                     <label className="w-full cursor-pointer">
@@ -78,3 +78,9 @@ function IndiceChoice({ handleIndiceSelection }) {
 }
 
 export default IndiceChoice;
+
+
+const indiceChoiceStyle = {
+    transitionDuration: '0.5s',
+    transitionTimingFunction: 'cubic-bezier(0.39, 0.575, 0.565, 1)'    
+}

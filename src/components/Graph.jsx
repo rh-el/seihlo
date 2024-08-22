@@ -33,71 +33,71 @@ function Graph({ dataInput, indiceSelection }) {
             break;
     }
 
-    if (rawData && indiceSelection === 'raw') {
-        switch (dataInput) {
-            case 'snow':
-                requestedData = rawData.daily.snowfall_sum
+    // if (rawData && indiceSelection === 'raw') {
+    //     switch (dataInput) {
+    //         case 'snow':
+    //             requestedData = rawData.daily.snowfall_sum
 
-                break;
-            case 'rain':
-                requestedData = rawData.daily.precipitation_sum
+    //             break;
+    //         case 'rain':
+    //             requestedData = rawData.daily.precipitation_sum
 
-                break;
-            case 'wind':
-                requestedData = rawData.daily.wind_speed_10m_max
+    //             break;
+    //         case 'wind':
+    //             requestedData = rawData.daily.wind_speed_10m_max
 
-                break;
-            case 'temp':
-                requestedData = rawData.daily.apparent_temperature_max
+    //             break;
+    //         case 'temp':
+    //             requestedData = rawData.daily.apparent_temperature_max
 
-                break;
-        }
+    //             break;
+    //     }
 
-        // console.log('max: ' + getMaxValue(requestedData))
-        // console.log('min: ' + getMinValue(requestedData))
+    //     // console.log('max: ' + getMaxValue(requestedData))
+    //     // console.log('min: ' + getMinValue(requestedData))
 
-        data = {
-            labels: rawData.daily.time,
-            datasets: [{
-                label: "smthg",
-                data: requestedData,
-                borderColor: "#E0FFFF",
-                radius: 0,
-                borderWidth: 1,
-            }],
-        }
+    //     data = {
+    //         labels: rawData.daily.time,
+    //         datasets: [{
+    //             label: "smthg",
+    //             data: requestedData,
+    //             borderColor: "#E0FFFF",
+    //             radius: 0,
+    //             borderWidth: 1,
+    //         }],
+    //     }
 
-        return (
-            <>
-            <div className="graphContainer w-full shrink-0">
-                <Line
-                    data={data}
-                    options={{
-                        plugins: {
-                            title: {
-                                display: true,
-                                text:indicesInfos
-                            },
-                            legend: {
-                                display: false
-                            }
-                        }
-                    }} />
-            </div>
-            <MeanGraph 
-                dataInput={dataInput}
-                indiceSelection={indiceSelection}
-                requestedData={requestedData}
-            />
-            </>
-        )
-    }
+    //     return (
+    //         <>
+    //         <div className="graphContainer w-full relative ">
+    //             <Line
+    //                 data={data}
+    //                 options={{
+    //                     plugins: {
+    //                         title: {
+    //                             display: true,
+    //                             text:indicesInfos
+    //                         },
+    //                         legend: {
+    //                             display: false
+    //                         }
+    //                     }
+    //                 }} />
+    //         </div>
+    //         <MeanGraph 
+    //             dataInput={dataInput}
+    //             indiceSelection={indiceSelection}
+    //             requestedData={requestedData}
+    //         />
+    //         </>
+    //     )
+    // }
 
     if (rawData && indiceSelection !== 'raw') {
         switch (indiceSelection) {
             case 'tmm':
                 requestedData = indicesResults.TMm
-
+                
                 break;
             case 'txge30':
                 requestedData = indicesResults.TXge30
@@ -142,7 +142,7 @@ function Graph({ dataInput, indiceSelection }) {
         return (
             <>
             <div className="flex flex-col gap-8">
-            <div className="graphContainer w-full shrink-0">
+            {/* <div className="graphContainer w-full "> */}
                 <Line
                     data={data}
                     options={{
@@ -206,7 +206,7 @@ function Graph({ dataInput, indiceSelection }) {
                             }
                         }
                     }} />
-            </div>
+            {/* </div> */}
             <MeanGraph 
                 dataInput={dataInput}
                 indiceSelection={indiceSelection}

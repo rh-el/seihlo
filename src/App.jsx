@@ -20,6 +20,7 @@ function App() {
   const [indicesResults, setIndicesResults] = useState(null);
   const [indiceSelection, setIndiceSelection] = useState('raw');
   const [selectedCity, setSelectedCity] = useState(null);
+  const [landingMode, setLandingMode] = useState(true);
 
   const handleDataInput = useCallback(
     (e) => {
@@ -87,6 +88,12 @@ function App() {
     },
     [cityData]
   )
+
+  // const handleLandingMode = useCallback(
+  //   () => {
+  //     setLandingMode(!landingMode)
+  //   }
+  // )
 
   const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
     const formattedDate = formatDateUrl(startDate, endDate);

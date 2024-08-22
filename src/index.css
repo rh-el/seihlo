@@ -15,3 +15,9 @@
   html {
     scroll-behavior: smooth;
   }
+
+  #indice-container,
+  #text-infos {
+    transition-duration: '0.5s';
+    transition-timing-function: 'cubic-bezier(0.39, 0.575, 0.565, 1)'   
+  }
