@@ -1,7 +1,7 @@
 function TextInfos(props) {
     const {selectedCity, startDate, endDate, dataInput, indiceSelection} = props
-    // console.log(selectedCity)   
     let reqDataInput;
+    const indicesInfos = indiceText(indiceSelection)
     switch (dataInput) {
         case 'temp':
             reqDataInput='temperature'
@@ -17,8 +17,6 @@ function TextInfos(props) {
             break;
     }
 
-
-
     return (
         <>
         {/* <div className="mt-[78px] w-4/12"></div> */}
@@ -30,7 +28,9 @@ function TextInfos(props) {
             <br />
             <p>requested data: {reqDataInput}</p>
             <br />
-            <p>data visualized: {indiceSelection}</p>
+            <p>displayed climdex indice: {indiceSelection}</p>
+            <br />
+            <p>indice informations: {indicesInfos}</p>
             {/* <p>scrolly: {window.scrollY} </p>            */}
         </div>
         </>

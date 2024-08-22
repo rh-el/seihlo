@@ -40,26 +40,33 @@ function validDate(date) {
   return false;
 }
 
-let scrollYPos = 0
-window.onscroll = function() {
-  console.log(window.scrollY)
-  if (window.scrollY > scrollYPos) {
-    window.scrollY > 5 ? document.getElementById('text-infos').style.transform = 'translateY(calc((448px/3) - 100px + 2rem))' : null
-    window.scrollY > 5 ? document.getElementById('indice-container').style.transform = 'translateY(calc((448px/3) - 100px + 2rem))' : null
-    window.scrollY > 105 ? document.getElementById('text-infos').style.transform = 'translateY(calc(((448px/3) * 2) - 200px + 2rem))' : null
-    window.scrollY > 105 ? document.getElementById('indice-container').style.transform = 'translateY(calc(((448px/3) * 2) - 200px + 2rem))' : null
-    window.scrollY > 205 ? document.getElementById('text-infos').style.transform = 'translateY(calc(448px - 250px + 2rem))' : null
-    window.scrollY > 205 ? document.getElementById('indice-container').style.transform = 'translateY(calc(448px - 250px + 2rem))' : null
+function indiceText(str) {
+  switch (str) {
+    case 'raw':
+        return 'daily raw data'
+    case 'tmm':
+        return 'yearly average temperature'
+    case 'txge30':
+        return 'yearly count of days with temperature exceeding 30°C'
+    case 'txgt50p':
+        return 'yearly percentage of days above average temperature' 
+    case 'etr':
+        return 'yearly temperature range'
+    case 'txx':
+        return 'yearly maximum temperature'
+    case 'r10mm':
+        return 'yearly count of days with precipitation exceeding 10mm'
+}
+}
 
-    scrollYPos = window.scrollY
-  } else {
-    window.scrollY < 200 ? document.getElementById('text-infos').style.transform = 'translateY(calc(((448px/3) * 2) - 200px + 2rem))' : null
-    window.scrollY < 200 ? document.getElementById('indice-container').style.transform = 'translateY(calc(((448px/3) * 2) - 200px + 2rem))' : null
-    window.scrollY < 100 ? document.getElementById('text-infos').style.transform = 'translateY(calc((448px/3) - 100px + 2rem))' : null
-    window.scrollY < 100 ? document.getElementById('indice-container').style.transform = 'translateY(calc((448px/3) - 100px + 2rem))' : null
-    window.scrollY < 20 ? document.getElementById('text-infos').style.transform = 'translateY(0)' : null
-    window.scrollY < 20 ? document.getElementById('indice-container').style.transform = 'translateY(0)' : null
-    scrollYPos = window.scrollY
-  }
-  // document.getElementById('text-infos').style.
+window.onscroll = function() {
+  makeDivFloat()
+}
+
+function makeDivFloat() {
+  const maxHeight = document.body.scrollHeight
+  const movementFactor = 500
+  let yPos = (window.scrollY * movementFactor) / maxHeight
+  document.getElementById('text-infos').style.transform = `translateY(${yPos}px)`
+  document.getElementById('indice-container').style.transform = `translateY(${yPos}px)`
 }

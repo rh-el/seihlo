@@ -1,21 +1,33 @@
 
 
-function IndiceChoice({ handleIndiceSelection }) {
+function IndiceChoice({ handleIndiceSelection, dataInput }) {
     return (
         <>
         <div id='indice-container' className=" w-4/12 h-fit top-[100px] sticky" style={indiceChoiceStyle}>
-            {document.getElementById('temp').checked && (
+            {dataInput && 
+            dataInput === 'temp' && (
                 <>
+                <div htmlFor='txx' className="w-full flex justify-center rounded-t-md px-2 py-4 border border-customgray text-customblue">indice selection</div>
                     <label className="w-full cursor-pointer">
                         <input
                             name="indiceChoice"
-                            id="tmm"
+                            id="txx"
                             type="radio"
                             defaultChecked
                             className="hidden peer"
                             onClick={handleIndiceSelection}
                         />
-                        <div htmlFor='tmm' className="w-full flex justify-center cursor-pointer rounded-t-md p-2 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">tmm</div>
+                        <div htmlFor='txx' className="w-full flex justify-center cursor-pointer p-2 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">txx</div>
+                    </label>
+                    <label className="w-full cursor-pointer">
+                        <input
+                            name="indiceChoice"
+                            id="tmm"
+                            type="radio"
+                            className="hidden peer"
+                            onClick={handleIndiceSelection}
+                        />
+                        <div htmlFor='tmm' className="w-full flex justify-center cursor-pointer p-2 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">tmm</div>
                     </label>
 
                     <label className="w-full cursor-pointer">
@@ -41,16 +53,6 @@ function IndiceChoice({ handleIndiceSelection }) {
                     <label className="w-full cursor-pointer">
                         <input
                             name="indiceChoice"
-                            id="txx"
-                            type="radio"
-                            className="hidden peer"
-                            onClick={handleIndiceSelection}
-                        />
-                        <div htmlFor='txx' className="w-full flex justify-center cursor-pointer p-2 border border-customgray duration-200 group hover:border-b-customblue hover:border-transparent hover:translate-x-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">txx</div>
-                    </label>
-                    <label className="w-full cursor-pointer">
-                        <input
-                            name="indiceChoice"
                             id="etr"
                             type="radio"
                             className="hidden peer"
@@ -60,7 +62,8 @@ function IndiceChoice({ handleIndiceSelection }) {
                     </label>
                 </>)}
 
-            {document.getElementById('rain').checked && (
+            {dataInput && 
+            dataInput === 'rain' &&  (
                 <label className="w-full cursor-pointer">
                     <input
                         name="indiceChoice"

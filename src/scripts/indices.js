@@ -903,7 +903,7 @@ function calculateR10mm(year, data) {
   return r10mm;
 }
 
-function calculateIndices(dataInput, data) {
+function calculateIndices(data) {
   const yearlyIndices = {
     years: [],
     TMm: [],
