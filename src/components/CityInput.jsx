@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import DateInput from "./DateInputs";
 let timer = 0;
 function CityInput(props) {
-  const { handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate, handleCitySelection } = props
+  const { handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate, handleCitySelection, selectedCity, rawData } = props
 
   const fetchCityLoc = async () => {
     try {
@@ -25,7 +25,8 @@ function CityInput(props) {
   const cityButtonClickHandler = (e) => {
     handleCoordinates(e)
     handleCitySelection(e)
-    document.getElementById('ville').value = cityData.results[e.target.id].name.toLowerCase()
+    // handleCity(e)
+    // document.getElementById('ville').value = cityData.results[e.target.id].name.toLowerCase()
     handleCityData({})
   }
 
@@ -56,6 +57,7 @@ function CityInput(props) {
               onChange={handleCity}
               className="w-full bg-customblack border border-customgray p-4 text-center rounded-l-md caret-customblue duration-200 focus:outline-none focus:border-transparent focus:border-b-customblue !outline-none"
             // autocomplete="off"
+            value={cityInput}
             />
           </div>
           <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
@@ -82,7 +84,9 @@ function CityInput(props) {
               onChange={handleCity}
               className=" focus:outline-none w-full bg-customblack border border-customgray p-4 text-center rounded-l-md caret-customblue duration-200 focus:border-transparent focus:border-b-customblue !outline-none"
             // autocomplete="off"
+            value={cityInput}
             />
+
           </div>
           <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
         </div>

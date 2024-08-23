@@ -9,8 +9,8 @@ import TextInfos from "../components/TextInfos";
 export const IndicesDataContext = createContext(null);
 
 function App() {
-  const [dataInput, setDataInput] = useState(null);
-  const [cityInput, setCityInput] = useState(null);
+  const [dataInput, setDataInput] = useState('');
+  const [cityInput, setCityInput] = useState('');
   const [cityData, setCityData] = useState(null);
   const [coordinates, setCoordinates] = useState(null);
   const [startDate, setStartDate] = useState(null);
@@ -18,7 +18,7 @@ function App() {
   const [rawData, setRawData] = useState(null);
   const [indicesResults, setIndicesResults] = useState(null);
   const [indiceSelection, setIndiceSelection] = useState('raw');
-  const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedCity, setSelectedCity] = useState('');
   const [loader, setLoader] = useState(false);
 
   const handleDataInput = useCallback(
@@ -100,11 +100,9 @@ function App() {
     const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&daily=precipitation_sum&daily=apparent_temperature_max`;
     const data = await (await fetch(formattedUrl)).json();
     setLoader(false)
-    console.log(loader)
     setRawData(data);
     const climdexIndices = calculateIndices(data);
     setIndicesResults(climdexIndices);
-
   };
 
 
@@ -129,6 +127,8 @@ function App() {
                 handleStartDate={handleStartDate}
                 handleEndDate={handleEndDate}
                 handleCitySelection={handleCitySelection}
+                selectedCity={selectedCity}
+                rawData={rawData}
               />
               <SubmitButton
                 dataInput={dataInput}
