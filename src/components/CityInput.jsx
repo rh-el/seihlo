@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import DateInput from "./DateInputs";
 let timer = 0;
 function CityInput(props) {
-  const { handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate, handleCitySelection, selectedCity, rawData } = props
+  const { handleCity, cityInput, cityData, handleCityData, handleCoordinates, handleStartDate, handleEndDate, handleCitySelection, startDate, endDate } = props
 
   const fetchCityLoc = async () => {
     try {
@@ -25,26 +25,32 @@ function CityInput(props) {
   const cityButtonClickHandler = (e) => {
     handleCoordinates(e)
     handleCitySelection(e)
-    // handleCity(e)
-    // document.getElementById('ville').value = cityData.results[e.target.id].name.toLowerCase()
     handleCityData({})
   }
 
   useEffect(() => {
-
+    console.log('use effect city input: ' + cityInput)
     clearTimeout(timer);
     timer = setTimeout(function () {
       if (cityInput) {
         fetchCityLoc(cityInput);
-
       }
     }, 500);
   }, [cityInput])
 
+  let dropDown;
+  if (cityData && Object.keys(cityData).length > 0) {
+    dropDown = cityData.results.slice(0, 5).map((city, i) =>
+      <div className="city-button  px-2 py-1 border border-transparent hover:border-b hover:bg-customblue hover:text-customblack duration-200 " key={i}>
+        <button className="text-left" id={i} key={i} onClick={cityButtonClickHandler}>{city.name.toLowerCase()}, {city.country && city.country.toLowerCase()}<br/> {city.latitude}, {city.longitude}</button>
+      </div>
+    )
+  }
+
 
   // console.log(cityData)
 
-  if (cityData && Object.keys(cityData).length > 0) {
+
     return (
       <div className="input-dropdown-container w-full">
         <div className="input-container flex">
@@ -60,41 +66,16 @@ function CityInput(props) {
             value={cityInput}
             />
           </div>
-          <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
+          <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} startDate={startDate} endDate={endDate} />
         </div>
         <div className="city-buttons-container absolute">
-          {cityData.results.slice(0, 5).map((city, i) =>
-            <div className="city-button  px-2 py-1 border border-transparent hover:border-b hover:bg-customblue hover:text-customblack duration-200 " key={i}>
-              <button className="text-left" id={i} key={i} onClick={cityButtonClickHandler}>{city.name.toLowerCase()}, {city.country.toLowerCase()}<br/> {city.latitude}, {city.longitude}</button>
-            </div>
-          )}
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className="input-dropdown-container w-full">
-        <div className="input-container flex">
-          <div className="city-input-container w-6/12">
-            <input
-              id="ville"
-              type="text"
-              name="ville"
-              placeholder="enter a city"
-              onChange={handleCity}
-              className=" focus:outline-none w-full bg-customblack border border-customgray p-4 text-center rounded-l-md caret-customblue duration-200 focus:border-transparent focus:border-b-customblue !outline-none"
-            // autocomplete="off"
-            value={cityInput}
-            />
-
-          </div>
-          <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} />
+          {dropDown}
         </div>
 
       </div>
 
     )
-  }
+  
 }
 
 export default CityInput;

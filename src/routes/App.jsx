@@ -13,13 +13,13 @@ function App() {
   const [cityInput, setCityInput] = useState('');
   const [cityData, setCityData] = useState(null);
   const [coordinates, setCoordinates] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [rawData, setRawData] = useState(null);
   const [indicesResults, setIndicesResults] = useState(null);
   const [indiceSelection, setIndiceSelection] = useState('raw');
   const [selectedCity, setSelectedCity] = useState('');
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(false); 
 
   const handleDataInput = useCallback(
     (e) => {
@@ -35,6 +35,7 @@ function App() {
   const handleCity = useCallback(
     (e) => {
       setCityInput(e.target.value);
+      console.log('handle city trig')
     },
     [cityInput]
   );
@@ -110,17 +111,20 @@ function App() {
 
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
-        {!loader && (
+        
           <div className={rawData ? "flex w-full gap-4" : "flex w-1/2 gap-4"} >
             {rawData && (
               <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
             )}
             <div className="w-full flex flex-col gap-4" >
               <DataInput handleDataInput={handleDataInput} />
+              {!loader && (
               <Graph dataInput={dataInput} indiceSelection={indiceSelection} />
+              )}
               <CityInput
                 handleCity={handleCity}
                 cityInput={cityInput}
+                setCityInput={setCityInput}
                 handleCityData={handleCityData}
                 cityData={cityData}
                 handleCoordinates={handleCoordinates}
@@ -128,7 +132,8 @@ function App() {
                 handleEndDate={handleEndDate}
                 handleCitySelection={handleCitySelection}
                 selectedCity={selectedCity}
-                rawData={rawData}
+                startDate={startDate}
+                endDate={endDate}
               />
               <SubmitButton
                 dataInput={dataInput}
@@ -151,7 +156,7 @@ function App() {
               />
             )}
           </div>
-        )}
+
         {loader && (
           <div>loading ........</div>
         )}
