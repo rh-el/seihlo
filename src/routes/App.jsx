@@ -107,11 +107,12 @@ function App() {
     setIndicesResults(climdexIndices);
   };
 
+  const width = window.innerWidth > 1024 ? true : false
 
   return (
-
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
+
         <div className='flex flex-col gap-8 min-h-svh justify-center p-8'>
               <h1 className='text-9xl'>seihlo</h1>
               <div className='w-1/2 text-lg'>
@@ -122,12 +123,37 @@ function App() {
                       go to app
               </button></a>
           </div>
-          <div id="graph-section" className={rawData ? "flex w-11/12 gap-4 min-h-svh items-center pb-4 " : "flex w-1/2 gap-4 min-h-svh items-center"} >
-            {rawData && (
-              <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
-            )}
-            <div className="w-10/12 flex flex-col gap-4" >
-              <DataInput handleDataInput={handleDataInput} />
+
+          <div id="graph-section" className={rawData ? "flex flex-col lg:flex-row md:w-11/12 w-full p-4 gap-4 min-h-svh items-center pb-4 " : "flex w-1/2 gap-4 min-h-svh items-center"} >
+              {rawData && (
+              <div id='indice-container' className="hidden lg:flex text-center w-full lg:w-4/12 lg:min-h-72 lg:top-[100px] lg:sticky lg:flex-col lg:justify-center" style={indiceChoiceStyle}>
+                  <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
+              </div>
+              )}
+              <div className="xl:w-10/12 lg:w-8/12 w-full flex flex-col gap-4" >
+                <DataInput handleDataInput={handleDataInput} />
+                <div className="lg:hidden">
+                  {rawData && (
+                    <>
+                      <div id='indice-container' className="flex lg:hidden text-center lg:min-h-72 w-full " style={indiceChoiceStyle}>
+                        <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
+                      </div>
+
+                      {/* <div id='text-infos' className="flex lg:hidden w-full border border-gray-800 rounded-md p-2 text-customblue/70 h-fit justify-center" style={indiceChoiceStyle}>
+                        <TextInfos 
+                        coordinates={coordinates}
+                        selectedCity={selectedCity}
+                        startDate={startDate}
+                        endDate={endDate}
+                        dataInput={dataInput}
+                        indiceSelection={indiceSelection}
+                        />
+                      
+                      </div> */}
+                    </>
+                  )}
+              </div>
+
               {!loader && (
               <Graph dataInput={dataInput} indiceSelection={indiceSelection} />
               )}
@@ -155,15 +181,18 @@ function App() {
                 handleFetch={handleFetch}
               />
             </div>
+            
             {rawData && (
-              <TextInfos 
-              coordinates={coordinates}
-              selectedCity={selectedCity}
-              startDate={startDate}
-              endDate={endDate}
-              dataInput={dataInput}
-              indiceSelection={indiceSelection}
-              />
+              <div id='text-infos' className="lg:flex hidden flex-col w-4/12 border border-gray-800 rounded-md p-2 text-customblue/70 h-fit justify-center" style={indiceChoiceStyle}>
+                <TextInfos 
+                coordinates={coordinates}
+                selectedCity={selectedCity}
+                startDate={startDate}
+                endDate={endDate}
+                dataInput={dataInput}
+                indiceSelection={indiceSelection}
+                />
+              </div>
             )}
           </div>
 
@@ -172,8 +201,16 @@ function App() {
         )}
 
       </IndicesDataContext.Provider>
-    </>
+
+      
+     </>
+
   );
+}
+
+const indiceChoiceStyle = {
+  transitionDuration: '0.5s',
+  transitionTimingFunction: 'cubic-bezier(0.39, 0.575, 0.565, 1)'    
 }
 
 export default App;

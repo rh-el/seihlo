@@ -19,9 +19,21 @@ function MeanGraph({ dataInput, indiceSelection, requestedData }) {
     // console.log(minYear)
     // console.log(maxYear);
     // console.log(meanValue);
-    
-    const data = {
+
+    const width = window.innerWidth > 640 ? true : false
+
+    const data = width ? {
         labels: ['minimum record in ' + minYear, 'maximum record in ' + maxYear, 'average'],
+        datasets: [{
+            label: "value",
+            data: [minValue, maxValue, meanValue],
+            borderColor: "#E0FFFF",
+            borderWidth: 2,
+            hoverBackgroundColor: "#E0FFFF",
+            hoverBorderColor: 'bg-customblack'
+        }],
+    } : {
+        labels: [minYear, maxYear, 'average'],
         datasets: [{
             label: "value",
             data: [minValue, maxValue, meanValue],

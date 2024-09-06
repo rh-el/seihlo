@@ -58,7 +58,7 @@ function Graph({ dataInput, indiceSelection }) {
         }
         return (
             <>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 md:w-full w-10/12 items-center justify-center m-auto">
                 <Line
                     data={data}
                     options={{

@@ -19,20 +19,22 @@ function TextInfos(props) {
 
     return (
         <>
-        {/* <div className="mt-[78px] w-4/12"></div> */}
-        <div id='text-infos' className="mx-4 w-4/12 border border-gray-800 rounded-md p-2 text-customblue/70 h-fit top-[100px] sticky flex flex-col justify-center " style={textInfosStyle}>
-            <p>selected city: {selectedCity.name.toLowerCase()}</p>
-            <p>country: {selectedCity.country.toLowerCase()}</p>
-            <p>region: {selectedCity.admin1.toLowerCase()}</p>
-            <p>coordinates: {selectedCity.latitude} / {selectedCity.longitude}</p>
+            <p className="hidden md:block">selected city: {selectedCity.name.toLowerCase()}</p>
+
+            <p className="hidden md:block">country: {selectedCity.country.toLowerCase()}</p>
+
+            <p className="hidden md:block">region: {selectedCity.admin1.toLowerCase()}</p>
+
+            <p className="hidden md:block">coordinates: {selectedCity.latitude} / {selectedCity.longitude}</p>
+
             <br />
-            <p>requested data: {reqDataInput}</p>
+            <p className="hidden md:block">requested data: {reqDataInput}</p>
             <br />
-            <p>displayed climdex indice: {indiceSelection}</p>
+            <p className="hidden md:block">displayed climdex indice: {indiceSelection}</p>
+        
             <br />
-            <p>indice informations: {indicesInfos}</p>
-            {/* <p>scrolly: {window.scrollY} </p>            */}
-        </div>
+            <p className="hidden md:block">indice informations: {indicesInfos}</p>
+
         </>
     )
 }
