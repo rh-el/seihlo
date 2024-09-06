@@ -3,7 +3,7 @@
 function IndiceChoice({ handleIndiceSelection, dataInput }) {
     return (
         <>
-        <div id='indice-container' className=" w-4/12 h-fit top-[100px] sticky" style={indiceChoiceStyle}>
+        <div id='indice-container' className="w-4/12 min-h-72 top-[100px] sticky flex flex-col justify-center text-center" style={indiceChoiceStyle}>
             {dataInput && 
             dataInput === 'temp' && (
                 <>

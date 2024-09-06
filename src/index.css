@@ -11,14 +11,22 @@
     
     src: url(./assets/fonts/RX100-Regular.otf);
   }
+
 } 
 
-  html {
-    scroll-behavior: smooth;  
-  }
+@layer components {
+  /* .main {
+    @apply bg-customblack text-customblue flex justify-center items-center min-h-svh
+  } */
+}
 
-  #indice-container,
-  #text-infos {
-    transition-duration: '0.5s';
-    transition-timing-function: 'cubic-bezier(0.39, 0.575, 0.565, 1)'   
-  }
+html {
+  scroll-behavior: smooth;  
+}
+
+#indice-container,
+#text-infos {
+  transition-duration: '0.5s';
+  transition-timing-function: 'cubic-bezier(0.39, 0.575, 0.565, 1)'   
+}
+

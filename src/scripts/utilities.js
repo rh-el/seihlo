@@ -59,14 +59,14 @@ function indiceText(str) {
 }
 }
 
-window.onscroll = function() {
-  makeDivFloat()
-}
+// window.onscroll = function() {
+//   makeDivFloat()
+// }
 
-function makeDivFloat() {
-  const maxHeight = document.body.scrollHeight
-  const movementFactor = 500
-  let yPos = (window.scrollY * movementFactor) / maxHeight
-  document.getElementById('text-infos').style.transform = `translateY(${yPos}px)`
-  document.getElementById('indice-container').style.transform = `translateY(${yPos}px)`
-}
+// function makeDivFloat() {
+//   const maxHeight = document.body.scrollHeight + 1000
+//   const movementFactor = 500
+//   let yPos = ((window.scrollY * movementFactor) / maxHeight)
+//   document.getElementById('text-infos').style.transform = `translateY(${yPos}px)`
+//   document.getElementById('indice-container').style.transform = `translateY(${yPos}px)`
+// }

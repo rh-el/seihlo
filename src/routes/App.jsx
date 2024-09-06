@@ -62,7 +62,8 @@ function App() {
   const handleStartDate = useCallback(
     (e) => {
       // validDate(e.target.value) ? setStartDate(e.target.value) : null;
-      setStartDate(e.target.value + '-01-01')
+
+      setStartDate(e.target.value)
     },
     [startDate]
   );
@@ -70,7 +71,7 @@ function App() {
   const handleEndDate = useCallback(
     (e) => {
       // validDate(e.target.value) ? setEndDate(e.target.value) : null;
-      setEndDate(e.target.value + '-12-31')
+      setEndDate(e.target.value)
     },
     [endDate]
   );
@@ -97,7 +98,7 @@ function App() {
 
   const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
     setLoader(true)
-    const formattedDate = formatDateUrl(startDate, endDate);
+    const formattedDate = formatDateUrl(startDate + '-01-01', endDate + '-12-31');
     const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&daily=precipitation_sum&daily=apparent_temperature_max`;
     const data = await (await fetch(formattedUrl)).json();
     setLoader(false)
@@ -111,12 +112,21 @@ function App() {
 
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
-        
-          <div className={rawData ? "flex w-full gap-4" : "flex w-1/2 gap-4"} >
+        <div className='flex flex-col gap-8 min-h-svh justify-center p-8'>
+              <h1 className='text-9xl'>seihlo</h1>
+              <div className='w-1/2 text-lg'>
+              <p>seihlo provides users with access to climate data from 1940 to the present.</p>
+              <p>the application calculates several <a href="https://www.climdex.org/learn/indices/" target='_blank' className='bg-customblue text-customblack '>climdex indices</a> from daily raw data provided by the open-meteo api, offering detailed insights of climate variability and change from users city and time period inputs.</p>
+              </div>
+              <a href="#graph-section"><button className='border py-2 px-4 rounded-md flex items-center text-lg bg-customblue text-customblack duration-100 hover:bg-customblack hover:text-customblue'>
+                      go to app
+              </button></a>
+          </div>
+          <div id="graph-section" className={rawData ? "flex w-11/12 gap-4 min-h-svh items-center pb-4 " : "flex w-1/2 gap-4 min-h-svh items-center"} >
             {rawData && (
               <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
             )}
-            <div className="w-full flex flex-col gap-4" >
+            <div className="w-10/12 flex flex-col gap-4" >
               <DataInput handleDataInput={handleDataInput} />
               {!loader && (
               <Graph dataInput={dataInput} indiceSelection={indiceSelection} />
@@ -158,7 +168,7 @@ function App() {
           </div>
 
         {loader && (
-          <div>loading ........</div>
+          <div className="absolute w-11/12 mt-[100svh] h-svh flex justify-center items-center backdrop-blur-lg ">loading ........</div>
         )}
 
       </IndicesDataContext.Provider>
