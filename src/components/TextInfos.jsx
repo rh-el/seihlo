@@ -20,21 +20,15 @@ function TextInfos(props) {
     return (
         <>
             <p className="hidden md:block">selected city: {selectedCity.name.toLowerCase()}</p>
-
             <p className="hidden md:block">country: {selectedCity.country.toLowerCase()}</p>
-
             <p className="hidden md:block">region: {selectedCity.admin1.toLowerCase()}</p>
-
             <p className="hidden md:block">coordinates: {selectedCity.latitude} / {selectedCity.longitude}</p>
-
             <br />
             <p className="hidden md:block">requested data: {reqDataInput}</p>
             <br />
             <p className="hidden md:block">displayed climdex indice: {indiceSelection}</p>
-        
             <br />
             <p className="hidden md:block">indice informations: {indicesInfos}</p>
-
         </>
     )
 }

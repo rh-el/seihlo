@@ -90,11 +90,6 @@ function App() {
     [cityData]
   )
 
-  // const handleLandingMode = useCallback(
-  //   () => {
-  //     setLandingMode(!landingMode)
-  //   }
-  // )
 
   const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
     setLoader(true)
@@ -138,18 +133,6 @@ function App() {
                       <div id='indice-container' className="flex lg:hidden text-center lg:min-h-72 w-full " style={indiceChoiceStyle}>
                         <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
                       </div>
-
-                      {/* <div id='text-infos' className="flex lg:hidden w-full border border-gray-800 rounded-md p-2 text-customblue/70 h-fit justify-center" style={indiceChoiceStyle}>
-                        <TextInfos 
-                        coordinates={coordinates}
-                        selectedCity={selectedCity}
-                        startDate={startDate}
-                        endDate={endDate}
-                        dataInput={dataInput}
-                        indiceSelection={indiceSelection}
-                        />
-                      
-                      </div> */}
                     </>
                   )}
               </div>

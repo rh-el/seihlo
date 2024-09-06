@@ -16,10 +16,6 @@ function MeanGraph({ dataInput, indiceSelection, requestedData }) {
 
     const meanValue = getMeanValue(requestedData)
 
-    // console.log(minYear)
-    // console.log(maxYear);
-    // console.log(meanValue);
-
     const width = window.innerWidth > 640 ? true : false
 
     const data = width ? {
