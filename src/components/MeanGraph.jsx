@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { IndicesDataContext } from "../routes/App";
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import { getMaxValue } from "../scripts/indices";
+import { getMeanValue } from "../scripts/indices";
+import { getMinValue } from "../scripts/indices";
 
 function MeanGraph({ dataInput, indiceSelection, requestedData }) {
     const { rawData, indicesResults } = useContext(IndicesDataContext);

@@ -1,3 +1,5 @@
+import {indiceText} from '../scripts/utilities'
+
 function TextInfos(props) {
     const {selectedCity, startDate, endDate, dataInput, indiceSelection} = props
     let reqDataInput;

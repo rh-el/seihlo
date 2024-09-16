@@ -3,9 +3,11 @@ import { IndicesDataContext } from "../routes/App";
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import MeanGraph from "./MeanGraph";
+import { indiceText } from "../scripts/utilities";
+import {convertRange, getMinValue, getMaxValue, getMeanValue} from '../scripts/indices'
 
-function Graph({ dataInput, indiceSelection }) {
-    const { rawData, indicesResults } = useContext(IndicesDataContext);
+function Graph({ dataInput, indiceSelection, indicesResults, rawData }) {
+    // const { rawData, indicesResults } = useContext(IndicesDataContext);
     
     let data, requestedData;
     const indicesInfos = indiceText(indiceSelection)

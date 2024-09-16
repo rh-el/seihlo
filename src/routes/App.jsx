@@ -5,7 +5,8 @@ import SubmitButton from "../components/SubmitButton";
 import Graph from '../components/Graph';
 import IndiceChoice from "../components/IndiceChoice";
 import TextInfos from "../components/TextInfos";
-// import {formatLocalisationUrl} from '../scripts/utilities';
+import {formatLocalisationUrl, formatDateUrl} from '../scripts/utilities';
+import {calculateIndices} from '../scripts/indices';
 
 export const IndicesDataContext = createContext(null);
 
@@ -21,6 +22,8 @@ function App() {
   const [indiceSelection, setIndiceSelection] = useState('raw');
   const [selectedCity, setSelectedCity] = useState('');
   const [loader, setLoader] = useState(false); 
+
+
 
   const handleDataInput = useCallback(
     (e) => {
@@ -139,7 +142,7 @@ function App() {
               </div>
 
               {!loader && (
-              <Graph dataInput={dataInput} indiceSelection={indiceSelection} />
+              <Graph dataInput={dataInput} indiceSelection={indiceSelection} indicesResults={indicesResults} rawData={rawData} />
               )}
               <CityInput
                 handleCity={handleCity}
