@@ -9,7 +9,7 @@ import {convertRange, getMinValue, getMaxValue, getMeanValue} from '../scripts/i
 function Graph({ dataInput, indiceSelection, indicesResults, rawData }) {
     // const { rawData, indicesResults } = useContext(IndicesDataContext);
     
-    let data, requestedData;
+    let data, requestedData, dataSmall;
     const indicesInfos = indiceText(indiceSelection)
 
     if (rawData && indiceSelection !== 'raw') {
@@ -58,11 +58,27 @@ function Graph({ dataInput, indiceSelection, indicesResults, rawData }) {
                 hoverBorderColor: 'bg-customblack'
             }],
         }
+
+        dataSmall = {
+            labels: indicesResults.years,
+            datasets: [{
+                label: 'value',
+                data: requestedData,
+                borderColor: "#E0FFFF",
+                radius: 0,
+                pointHoverRadius: 0,
+                pointHoverBackgroundColor: '#E0FFFF',   
+                borderWidth: 2,
+                tension: 0.5,
+                hoverBorderColor: 'bg-customblack'
+            }],
+        }
+        console.log(window.innerWidth)
         return (
             <>
-            <div className="flex flex-col gap-8 md:w-full w-10/12 items-center justify-center m-auto">
+            <div className="flex flex-col gap-8 w-11/12 lg:w-full items-center justify-center m-auto">
                 <Line
-                    data={data}
+                    data={window.innerWidth > 768 ? data : dataSmall}
                     options={{
                         plugins: {
                             title: {

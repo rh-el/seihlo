@@ -114,7 +114,7 @@ function App() {
 
         <div className='flex flex-col gap-8 min-h-svh justify-center p-8'>
               <h1 className='text-9xl'>seihlo</h1>
-              <div className='w-1/2 text-lg'>
+              <div className='md:w-1/2 w-full text-lg'>
               <p>seihlo provides users with access to climate data from 1940 to the present.</p>
               <p>the application calculates several <a href="https://www.climdex.org/learn/indices/" target='_blank' className='bg-customblue text-customblack '>climdex indices</a> from daily raw data provided by the open-meteo api, offering detailed insights of climate variability and change from users city and time period inputs.</p>
               </div>
@@ -123,13 +123,13 @@ function App() {
               </button></a>
           </div>
 
-          <div id="graph-section" className={rawData ? "flex flex-col lg:flex-row md:w-11/12 w-full p-4 gap-4 min-h-svh items-center pb-4 " : "flex w-1/2 gap-4 min-h-svh items-center"} >
+          <div id="graph-section" className={rawData ? "flex flex-col lg:flex-row md:w-11/12 w-full p-4 gap-4 min-h-svh items-center " : "flex w-1/2 gap-4 min-h-svh items-center"} >
               {rawData && (
               <div id='indice-container' className="hidden lg:flex text-center w-full lg:w-4/12 lg:min-h-72 lg:top-[100px] lg:sticky lg:flex-col lg:justify-center" style={indiceChoiceStyle}>
                   <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
               </div>
               )}
-              <div className="xl:w-10/12 lg:w-8/12 w-full flex flex-col gap-4" >
+              <div className={rawData ? "xl:w-full lg:w-8/12 w-full flex flex-col gap-4 p-4" : "xl:w-full lg:w-8/12 w-full flex flex-col gap-4"} >
                 <DataInput handleDataInput={handleDataInput} />
                 <div className="lg:hidden">
                   {rawData && (
