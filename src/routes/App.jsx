@@ -5,7 +5,7 @@ import SubmitButton from "../components/SubmitButton";
 import Graph from '../components/Graph';
 import IndiceChoice from "../components/IndiceChoice";
 import TextInfos from "../components/TextInfos";
-import formatLocalisationUrl from '../scripts/utilities';
+// import {formatLocalisationUrl} from '../scripts/utilities';
 
 export const IndicesDataContext = createContext(null);
 

@@ -1,6 +1,8 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
+import App from "./routes/App.jsx";
 import "./index.css";
-import Root from "./routes/root.jsx";
+
 
 // const router = createBrowserRouter([
 //     {
@@ -15,5 +17,6 @@ import Root from "./routes/root.jsx";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-      <Root />
+    //   <RouterProvider router={router} />
+    <App />
   );
