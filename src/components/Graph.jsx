@@ -73,7 +73,9 @@ function Graph({ dataInput, indiceSelection, indicesResults, rawData }) {
                 hoverBorderColor: 'bg-customblack'
             }],
         }
-        console.log(window.innerWidth)
+
+        let size = window.innerWidth > 768 ? 18 : 14
+
         return (
             <>
             <div className="flex flex-col gap-8 w-11/12 lg:w-full items-center justify-center m-auto">
@@ -88,7 +90,7 @@ function Graph({ dataInput, indiceSelection, indicesResults, rawData }) {
                                 font: {
                                     family: "RX100",
                                     weight: 'normal',
-                                    size: 18
+                                    size: size
                                 }
                             },
                             legend: {

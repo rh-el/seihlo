@@ -43,6 +43,8 @@ function MeanGraph({ dataInput, indiceSelection, requestedData }) {
         }],
     }
 
+    let size = window.innerWidth > 768 ? 18 : 14
+
     return (
 
             <Bar data={data}
@@ -55,7 +57,7 @@ function MeanGraph({ dataInput, indiceSelection, requestedData }) {
                         font: {
                             family: "RX100",
                             weight: 'normal',
-                            size: 18
+                            size: size
                         }
                     },
                     legend: {

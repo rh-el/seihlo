@@ -53,24 +53,31 @@ function CityInput(props) {
 
     return (
       <div className="input-dropdown-container w-full">
-        <div className="input-container flex">
-          <div className="city-input-container w-6/12">
+        <div className="relative input-container flex items-center flex-col md:flex-row gap-4 md:gap-0">
+          <div className="city-input-container w-full md:w-6/12">
             <input
               id="ville"
               type="text"
               name="ville"
               placeholder="enter a city"
               onChange={handleCity}
-              className="w-full bg-customblack border border-customgray p-4 text-center rounded-l-md caret-customblue duration-200 focus:outline-none focus:border-transparent focus:border-b-customblue !outline-none"
-            autocomplete="off"
+              className="w-full bg-customblack border border-customgray md:h-20 p-4 text-center rounded-md md:rounded-none md:rounded-l-md caret-customblue duration-200 focus:outline-none focus:border-transparent focus:border-b-customblue !outline-none"
+            autoComplete="off"
             value={cityInput}
             />
           </div>
+          {window.innerWidth < 768 && 
+          <div className="city-buttons-container absolute mt-10 md:mt-20 w-full px-10 backdrop-blur-sm ">
+            {dropDown}
+          </div>
+        }
           <DateInput handleStartDate={handleStartDate} handleEndDate={handleEndDate} startDate={startDate} endDate={endDate} />
         </div>
-        <div className="city-buttons-container absolute">
-          {dropDown}
-        </div>
+        {window.innerWidth > 768 && 
+          <div className="city-buttons-container absolute">
+            {dropDown}
+          </div>
+        }
 
       </div>
 

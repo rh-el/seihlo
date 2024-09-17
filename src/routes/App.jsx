@@ -29,8 +29,6 @@ function App() {
     (e) => {
       setDataInput(e.target.id);
       e.target.id === 'temp' ? setIndiceSelection('txx') : setIndiceSelection('r10mm')
-      // setIndiceSelection('raw')
-      // rawData ? document.getElementById('raw').checked = true : null
     }
     ,
     [dataInput]
@@ -112,7 +110,7 @@ function App() {
     <>
       <IndicesDataContext.Provider value={{ rawData, indicesResults }}>
 
-        <div className='flex flex-col gap-8 min-h-svh justify-center p-8'>
+        <div className='flex flex-col gap-8 min-h-svh justify-center md:p-8 xl:w-9/12'>
               <h1 className='text-9xl'>seihlo</h1>
               <div className='md:w-1/2 w-full text-lg'>
               <p>seihlo provides users with access to climate data from 1940 to the present.</p>
@@ -123,23 +121,23 @@ function App() {
               </button></a>
           </div>
 
-          <div id="graph-section" className={rawData ? "flex flex-col lg:flex-row md:w-11/12 w-full p-4 gap-4 min-h-svh items-center " : "flex w-1/2 gap-4 min-h-svh items-center"} >
+          <div id="graph-section" className={rawData ? "flex flex-col lg:flex-row md:w-11/12 w-full md:p-4 gap-4 min-h-svh items-center " : "flex justify-center w-full xl:w-9/12 xl:p-0 md:p-2 gap-4 min-h-svh items-center"} >
               {rawData && (
               <div id='indice-container' className="hidden lg:flex text-center w-full lg:w-4/12 lg:min-h-72 lg:top-[100px] lg:sticky lg:flex-col lg:justify-center" style={indiceChoiceStyle}>
                   <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
               </div>
               )}
-              <div className={rawData ? "xl:w-full lg:w-8/12 w-full flex flex-col gap-4 p-4" : "xl:w-full lg:w-8/12 w-full flex flex-col gap-4"} >
+              <div className={rawData ? "xl:w-full lg:w-8/12 w-full flex flex-col gap-4 md:px-10" : "xl:w-full lg:w-8/12 w-full flex flex-col gap-4 md:px-10"} >
                 <DataInput handleDataInput={handleDataInput} />
-                <div className="lg:hidden">
+                {/* <div className="lg:hidden"> */}
                   {rawData && (
                     <>
-                      <div id='indice-container' className="flex lg:hidden text-center lg:min-h-72 w-full " style={indiceChoiceStyle}>
+                      <div id='indice-container' className="flex lg:hidden text-center w-full h-20 " style={indiceChoiceStyle}>
                         <IndiceChoice handleIndiceSelection={handleIndiceSelection} dataInput={dataInput} />
                       </div>
                     </>
                   )}
-              </div>
+                {/* </div> */}
 
               {!loader && (
               <Graph dataInput={dataInput} indiceSelection={indiceSelection} indicesResults={indicesResults} rawData={rawData} />
@@ -184,7 +182,7 @@ function App() {
           </div>
 
         {loader && (
-          <div className="absolute w-11/12 mt-[100svh] h-svh flex justify-center items-center backdrop-blur-lg ">loading ........</div>
+          <div className="absolute w-11/12 mt-[100svh] h-screen flex justify-center items-center backdrop-blur-lg ">loading ........</div>
         )}
 
       </IndicesDataContext.Provider>
