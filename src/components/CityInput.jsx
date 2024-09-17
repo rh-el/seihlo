@@ -13,9 +13,12 @@ function CityInput(props) {
       if (!response.ok) {
         throw new Error("Network error");
       }
-
+      
       const data = await response.json();
-      handleCityData(data)
+
+      if (data.results) {
+        handleCityData(data)
+      } 
 
     } catch (error) {
       console.error("Error fetching city location:", error);

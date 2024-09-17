@@ -64,7 +64,6 @@ function App() {
   const handleStartDate = useCallback(
     (e) => {
       // validDate(e.target.value) ? setStartDate(e.target.value) : null;
-
       setStartDate(e.target.value)
     },
     [startDate]
@@ -94,14 +93,18 @@ function App() {
 
 
   const handleFetch = async (dataInput, coordinates, startDate, endDate) => {
-    setLoader(true)
-    const formattedDate = formatDateUrl(startDate + '-01-01', endDate + '-12-31');
-    const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&daily=precipitation_sum&daily=apparent_temperature_max`;
-    const data = await (await fetch(formattedUrl)).json();
-    setLoader(false)
-    setRawData(data);
-    const climdexIndices = calculateIndices(data);
-    setIndicesResults(climdexIndices);
+    if (startDate >= 1940 && endDate < 2024) {
+      setLoader(true)
+      const formattedDate = formatDateUrl(startDate + '-01-01', endDate + '-12-31');
+      const formattedUrl = `https://archive-api.open-meteo.com/v1/archive?${coordinates}&${formattedDate}&daily=precipitation_sum&daily=apparent_temperature_max`;
+      const data = await (await fetch(formattedUrl)).json();
+      setLoader(false)
+      setRawData(data);
+      const climdexIndices = calculateIndices(data);
+      setIndicesResults(climdexIndices);
+    } else {
+      alert('please enter date between 1940 and 2023')
+    }
   };
 
   const width = window.innerWidth > 1024 ? true : false
