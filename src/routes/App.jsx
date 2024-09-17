@@ -186,6 +186,7 @@ function App() {
 
         {loader && (
           <div className="absolute w-11/12 mt-[100svh] h-screen flex justify-center items-center backdrop-blur-lg ">loading ........</div>
+
         )}
 
       </IndicesDataContext.Provider>

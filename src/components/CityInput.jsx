@@ -64,7 +64,7 @@ function CityInput(props) {
               name="ville"
               placeholder="enter a city"
               onChange={handleCity}
-              className="w-full bg-customblack border border-customgray md:h-20 p-4 text-center rounded-md md:rounded-none md:rounded-l-md caret-customblue duration-200 focus:outline-none focus:border-transparent focus:border-b-customblue !outline-none"
+              className="w-full no-underline bg-customblack border border-customgray md:h-20 p-4 text-center rounded-md md:rounded-none md:rounded-l-md caret-customblue duration-200 focus:outline-none focus:border-transparent focus:border-b-customblue !outline-none"
             autoComplete="off"
             value={cityInput}
             />

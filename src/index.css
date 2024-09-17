@@ -14,10 +14,9 @@
 
 } 
 
-@layer components {
-  /* .main {
-    @apply bg-customblack text-customblue flex justify-center items-center min-h-svh
-  } */
+::selection {
+  background-color: #E0FFFF;
+  color: #10100e
 }
 
 html {
@@ -29,4 +28,3 @@ html {
   transition-duration: '0.5s';
   transition-timing-function: 'cubic-bezier(0.39, 0.575, 0.565, 1)'   
 }
-
