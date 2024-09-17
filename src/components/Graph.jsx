@@ -7,7 +7,6 @@ import { indiceText } from "../scripts/utilities";
 import {convertRange, getMinValue, getMaxValue, getMeanValue} from '../scripts/indices'
 
 function Graph({ dataInput, indiceSelection, indicesResults, rawData }) {
-    // const { rawData, indicesResults } = useContext(IndicesDataContext);
     
     let data, requestedData, dataSmall;
     const indicesInfos = indiceText(indiceSelection)

@@ -5,24 +5,6 @@ export function formatLocalisationUrl(coordinatesArr) {
   return formattedLocUrl;
 }
 
-// export function formatDataUrl(dataInput) {
-//   let formattedDataUrl = "";
-//   switch (dataInput) {
-//     case "rain":
-//       formattedDataUrl = "daily=precipitation_sum";
-//       break;
-//     case "snow":
-//       formattedDataUrl = "daily=snowfall_sum";
-//       break;
-//     case "wind":
-//       formattedDataUrl = "daily=wind_speed_10m_max";
-//       break;
-//     case "temp":
-//       formattedDataUrl = "daily=wind_speed_10m_max";
-//       break;
-//   }
-//   return formattedDataUrl;
-// }
 
 export function formatDateUrl(startDate, endDate) {
   yearsArray = [];
@@ -33,13 +15,6 @@ export function formatDateUrl(startDate, endDate) {
   return formattedDateUrl;
 }
 
-// export function validDate(date) {
-//   const validFormat = /^\d{4}-\d{2}-\d{2}$/;
-//   if (validFormat.test(date)) {
-//     return true;
-//   }
-//   return false;
-// }
 
 export function indiceText(str) {
   switch (str) {

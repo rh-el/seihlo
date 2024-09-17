@@ -37,7 +37,6 @@ function App() {
   const handleCity = useCallback(
     (e) => {
       setCityInput(e.target.value);
-      console.log('handle city trig')
     },
     [cityInput]
   );
@@ -63,7 +62,6 @@ function App() {
 
   const handleStartDate = useCallback(
     (e) => {
-      // validDate(e.target.value) ? setStartDate(e.target.value) : null;
       setStartDate(e.target.value)
     },
     [startDate]
@@ -71,7 +69,6 @@ function App() {
 
   const handleEndDate = useCallback(
     (e) => {
-      // validDate(e.target.value) ? setEndDate(e.target.value) : null;
       setEndDate(e.target.value)
     },
     [endDate]
@@ -132,7 +129,6 @@ function App() {
               )}
               <div className={rawData ? "xl:w-full lg:w-8/12 w-full flex flex-col gap-4 md:px-10" : "xl:w-full lg:w-8/12 w-full flex flex-col gap-4 md:px-10"} >
                 <DataInput handleDataInput={handleDataInput} />
-                {/* <div className="lg:hidden"> */}
                   {rawData && (
                     <>
                       <div id='indice-container' className="flex lg:hidden text-center w-full h-20 " style={indiceChoiceStyle}>
@@ -140,7 +136,6 @@ function App() {
                       </div>
                     </>
                   )}
-                {/* </div> */}
 
               {!loader && (
               <Graph dataInput={dataInput} indiceSelection={indiceSelection} indicesResults={indicesResults} rawData={rawData} />

@@ -32,7 +32,6 @@ function CityInput(props) {
   }
 
   useEffect(() => {
-    console.log('use effect city input: ' + cityInput)
     clearTimeout(timer);
     timer = setTimeout(function () {
       if (cityInput) {
@@ -49,10 +48,6 @@ function CityInput(props) {
       </div>
     )
   }
-
-
-  // console.log(cityData)
-
 
     return (
       <div className="input-dropdown-container w-full">

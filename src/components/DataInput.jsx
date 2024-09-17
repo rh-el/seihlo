@@ -1,11 +1,5 @@
-import React, { useContext } from "react";
-import { IndicesDataContext } from '../routes/App';
-
 function DataInput(props) {
   const { handleDataInput } = props;
-
-  // method to get data from context defined
-  const { rawData, indicesResults } = useContext(IndicesDataContext);
 
   return (
     <>
@@ -27,7 +21,6 @@ function DataInput(props) {
             id='rain'
             name='input-radio'
             onClick={handleDataInput}
-            // style={radioButton}
             className="hidden peer"
           />
           <div htmlFor='precipitation' className="w-full md:h-20 items-center flex justify-center cursor-pointer p-4 border border-customgray rounded-r-md duration-200 group hover:border-b-customblue hover:border-transparent hover:-translate-y-1 peer-checked:bg-customblue peer-checked:text-customblack peer-checked:translate-y-0 ">precipitation</div>
