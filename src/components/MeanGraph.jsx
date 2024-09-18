@@ -52,7 +52,7 @@ function MeanGraph({ dataInput, indiceSelection, requestedData }) {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'minimum, maximum and average values of the indice on the selected period',
+                        text: 'extreme and average values of the selected indice',
                         color: '#E0FFFF',
                         font: {
                             family: "RX100",

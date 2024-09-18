@@ -65,7 +65,7 @@ function CityInput(props) {
             />
           </div>
           {window.innerWidth < 768 && 
-          <div className="city-buttons-container absolute mt-10 md:mt-20 w-full px-10 backdrop-blur-sm ">
+          <div className="city-buttons-container absolute top-16 md:mt-20 w-full md:px-10 backdrop-blur-sm ">
             {dropDown}
           </div>
         }
