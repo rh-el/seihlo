@@ -5,4 +5,4 @@
 <p id="description">a data visualization project showcasing graphs displaying climate change since 1940 <br><br> 
   seihlo uses historical weather api from open-meteo <br><br>
   users can chose the city and the time span they want the data to be displayed from <br><br> 
-  the project is based on climdex indices calculations from raw data highlighting global trends on the studied perriod.</p>
+  several calculations are then applied following <a href="https://www.climdex.org/learn/indices/" target="_blank">climdex indices research</a> in order to highlight global trends on the studied period<br><br></p>
