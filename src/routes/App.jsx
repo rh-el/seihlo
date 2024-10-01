@@ -29,8 +29,7 @@ function App() {
     (e) => {
       setDataInput(e.target.id);
       e.target.id === 'temp' ? setIndiceSelection('txx') : setIndiceSelection('r10mm')
-    }
-    ,
+    },
     [dataInput]
   );
 
