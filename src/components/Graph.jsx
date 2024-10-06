@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { IndicesDataContext } from "../routes/App";
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
@@ -7,7 +6,7 @@ import { indiceText } from "../scripts/utilities";
 import {convertRange, getMinValue, getMaxValue, getMeanValue} from '../scripts/indices'
 
 function Graph({ dataInput, indiceSelection, indicesResults, rawData }) {
-    const context = useContext()
+    // const context = useContext()
     let data, requestedData, dataSmall;
     const indicesInfos = indiceText(indiceSelection)
 
